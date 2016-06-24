@@ -1,0 +1,56 @@
+.icon {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-image: url(sprite.svg);
+}
+.icon-home {
+    width: 16px;
+    height: 16px;
+    background-position: 0 0;
+}
+.icon-profile {
+    width: 16px;
+    height: 16px;
+    background-position: -32px 0;
+}
+.icon-coin-dollar {
+    width: 16px;
+    height: 16px;
+    background-position: -64px 0;
+}
+.icon-lifebuoy {
+    width: 16px;
+    height: 16px;
+    background-position: -96px 0;
+}
+.icon-address-book {
+    width: 16px;
+    height: 16px;
+    background-position: -128px 0;
+}
+.icon-envelop {
+    width: 16px;
+    height: 16px;
+    background-position: -160px 0;
+}
+.icon-bubbles4 {
+    width: 18px;
+    height: 16px;
+    background-position: -192px 0;
+}
+.icon-facebook2 {
+    width: 16px;
+    height: 16px;
+    background-position: -224px 0;
+}
+.icon-twitter {
+    width: 16px;
+    height: 16px;
+    background-position: -256px 0;
+}
+.icon-file-pdf {
+    width: 16px;
+    height: 16px;
+    background-position: -288px 0;
+}
+

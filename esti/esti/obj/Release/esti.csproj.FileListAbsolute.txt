@@ -1,0 +1,6 @@
+e:\documentos\visual studio 2013\Projects\esti\esti\bin\esti.dll.config
+e:\documentos\visual studio 2013\Projects\esti\esti\bin\esti.dll
+e:\documentos\visual studio 2013\Projects\esti\esti\bin\esti.pdb
+e:\documentos\visual studio 2013\Projects\esti\esti\obj\Release\esti.dll
+e:\documentos\visual studio 2013\Projects\esti\esti\obj\Release\esti.pdb
+e:\documentos\visual studio 2013\Projects\esti\esti\obj\Release\esti.csprojResolveAssemblyReference.cache

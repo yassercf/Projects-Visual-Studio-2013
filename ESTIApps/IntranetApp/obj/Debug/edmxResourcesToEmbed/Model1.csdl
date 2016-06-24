@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SistemasESTIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="apps">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="esPublico" Type="Boolean" />
+    <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="permisos" Relationship="Self.FK__permisos__idApp__164452B1" FromRole="apps" ToRole="permisos" />
+  </EntityType>
+  <EntityType Name="permisos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idApp" Type="Int32" />
+    <Property Name="idUsuario" Type="Int32" />
+    <NavigationProperty Name="apps" Relationship="Self.FK__permisos__idApp__164452B1" FromRole="permisos" ToRole="apps" />
+    <NavigationProperty Name="usuarios" Relationship="Self.FK__permisos__idUsua__173876EA" FromRole="permisos" ToRole="usuarios" />
+  </EntityType>
+  <EntityType Name="usuarios">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fullname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="esAdmin" Type="Boolean" />
+    <NavigationProperty Name="permisos" Relationship="Self.FK__permisos__idUsua__173876EA" FromRole="usuarios" ToRole="permisos" />
+  </EntityType>
+  <Association Name="FK__permisos__idApp__164452B1">
+    <End Role="apps" Type="Self.apps" Multiplicity="0..1" />
+    <End Role="permisos" Type="Self.permisos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="apps">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="permisos">
+        <PropertyRef Name="idApp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__permisos__idUsua__173876EA">
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
+    <End Role="permisos" Type="Self.permisos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="permisos">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SistemasESTIEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="apps" EntityType="Self.apps" />
+    <EntitySet Name="permisos" EntityType="Self.permisos" />
+    <EntitySet Name="usuarios" EntityType="Self.usuarios" />
+    <AssociationSet Name="FK__permisos__idApp__164452B1" Association="Self.FK__permisos__idApp__164452B1">
+      <End Role="apps" EntitySet="apps" />
+      <End Role="permisos" EntitySet="permisos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__permisos__idUsua__173876EA" Association="Self.FK__permisos__idUsua__173876EA">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="permisos" EntitySet="permisos" />
+    </AssociationSet>
+    <FunctionImport Name="spGetApps" ReturnType="Collection(SistemasESTIModel.spGetApps_Result)">
+      <Parameter Name="idUsuario" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="spGetApps_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="true" MaxLength="255" />
+    <Property Type="Boolean" Name="esPublico" Nullable="true" />
+    <Property Type="String" Name="url" Nullable="true" MaxLength="255" />
+    <Property Type="Binary" Name="foto" Nullable="true" MaxLength="Max" />
+  </ComplexType>
+</Schema>

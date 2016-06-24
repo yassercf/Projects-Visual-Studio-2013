@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>\\apps\WebAppps\sitioesti</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="assets/css/media-queries.css">
+      <publishTime>02/16/2016 16:01:43</publishTime>
+    </File>
+    <File Include="assets/css/onepage-scroll.css">
+      <publishTime>02/16/2016 16:01:43</publishTime>
+    </File>
+    <File Include="assets/css/scrollbar.css">
+      <publishTime>02/16/2016 16:01:43</publishTime>
+    </File>
+    <File Include="assets/css/sprite.css">
+      <publishTime>02/17/2016 15:26:17</publishTime>
+    </File>
+    <File Include="assets/css/sprite.svg">
+      <publishTime>02/17/2016 15:26:52</publishTime>
+    </File>
+    <File Include="assets/css/style.css">
+      <publishTime>02/23/2016 10:00:58</publishTime>
+    </File>
+    <File Include="assets/img/logo-vc.png">
+      <publishTime>02/16/2016 16:01:43</publishTime>
+    </File>
+    <File Include="assets/img/logoFix.svg">
+      <publishTime>02/16/2016 16:01:43</publishTime>
+    </File>
+    <File Include="assets/img/xsoft_touch-icon-ipad-retina.png">
+      <publishTime>02/16/2016 16:01:43</publishTime>
+    </File>
+    <File Include="assets/img/xsoft_touch-icon-ipad.png">
+      <publishTime>02/16/2016 16:01:43</publishTime>
+    </File>
+    <File Include="assets/img/xsoft_touch-icon-iphone-retina.png">
+      <publishTime>02/16/2016 16:01:43</publishTime>
+    </File>
+    <File Include="assets/img/xsoft_touch-icon-iphone.png">
+      <publishTime>02/16/2016 16:01:43</publishTime>
+    </File>
+    <File Include="assets/js/jquery-2.1.1.min.js">
+      <publishTime>02/16/2016 16:01:43</publishTime>
+    </File>
+    <File Include="assets/js/jquery.fileupload.js">
+      <publishTime>02/16/2016 16:01:43</publishTime>
+    </File>
+    <File Include="assets/js/jquery.iframe-transport.js">
+      <publishTime>02/16/2016 16:01:43</publishTime>
+    </File>
+    <File Include="assets/js/jquery.onepage-scroll.js">
+      <publishTime>02/16/2016 16:01:43</publishTime>
+    </File>
+    <File Include="assets/js/jquery.ui.widget.js">
+      <publishTime>02/16/2016 16:01:43</publishTime>
+    </File>
+    <File Include="assets/js/js.js">
+      <publishTime>02/23/2016 09:33:53</publishTime>
+    </File>
+    <File Include="assets/js/mousewheel.js">
+      <publishTime>02/16/2016 16:01:43</publishTime>
+    </File>
+    <File Include="assets/js/scrollbar.js">
+      <publishTime>02/16/2016 16:01:43</publishTime>
+    </File>
+    <File Include="assets/video/estilogo.mp4">
+      <publishTime>02/24/2016 08:01:18</publishTime>
+    </File>
+    <File Include="assets/video/estilogo.ogv">
+      <publishTime>02/24/2016 08:01:18</publishTime>
+    </File>
+    <File Include="assets/video/estilogo.webm">
+      <publishTime>02/24/2016 08:01:18</publishTime>
+    </File>
+    <File Include="assets/video/XSoft.mp4">
+      <publishTime>02/18/2016 12:29:31</publishTime>
+    </File>
+    <File Include="assets/video/XSoft.ogv">
+      <publishTime>02/18/2016 12:29:31</publishTime>
+    </File>
+    <File Include="assets/video/XSoft.webm">
+      <publishTime>02/18/2016 12:29:31</publishTime>
+    </File>
+    <File Include="bin/esti.dll">
+      <publishTime>02/24/2016 08:03:27</publishTime>
+    </File>
+    <File Include="index.html">
+      <publishTime>02/24/2016 08:01:43</publishTime>
+    </File>
+    <File Include="pages/about.htm">
+      <publishTime>02/18/2016 11:58:33</publishTime>
+    </File>
+    <File Include="pages/apply.htm">
+      <publishTime>02/16/2016 16:22:25</publishTime>
+    </File>
+    <File Include="pages/contacts.htm">
+      <publishTime>02/16/2016 16:22:25</publishTime>
+    </File>
+    <File Include="pages/development.htm">
+      <publishTime>02/16/2016 16:22:25</publishTime>
+    </File>
+    <File Include="pages/job.htm">
+      <publishTime>02/16/2016 16:22:25</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>02/16/2016 16:13:19</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

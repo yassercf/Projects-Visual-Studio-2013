@@ -1,0 +1,80 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Root.master.cs" Inherits="IntranetApp.RootMaster" %>
+
+<%-- DXCOMMENT: Page Root.master is a master page that contains the root layout (it includes Header, Cental Area, and Footer) --%>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0" />
+    <title></title>
+    <asp:ContentPlaceHolder ID="sking" runat="server" >
+        <link rel="stylesheet" type="text/css" href="Content/css/style.css" />
+    </asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder ID="scripting" runat="server"/>
+     
+</head>
+<body runat="server" id="Body">
+    
+    <div class="content_wrapper">
+        <div class="top_content">            
+            <div class="header">
+                                
+                <div style="margin-bottom: 10px;">
+                    <h1 style="float:left; display:block; width: 100%;"><strong>ESTi</strong> Apps</h1> 
+                    <div id="info" style="text-align:right;width:65%;position:absolute; font-size:small">Usuario Conectado: <%--<dx:ASPxLabel ID="labelInfoUser" runat="server" Text="Usuario de Prueba" Font-Bold="False" Font-Italic="True"  />--%>
+                        <dx:ASPxHyperLink ID="ASPxHyperLink1" runat="server" Text="Usuario de Prueba" NavigateUrl="#" Font-Bold="True" Font-Italic="True" Font-Size="Small" Font-Underline="False" ForeColor="White">
+                        </dx:ASPxHyperLink>
+                    </div>
+                <p style="display:block; width: 100%;">Plataforma Integrada para el acceso rápido de los servicios y sistemas desplegados en la red. Un universo de aplicaciones para el ESTI al alcance de sus manos.</p>
+                </div>
+                            
+                <form id="form1" runat="server">
+                   <dx:ASPxPanel ID="MainPane" runat="server" CssClass="mainContentPane">
+                        <PanelCollection>
+                            <dx:PanelContent runat="server" SupportsDisabledAttribute="True">                              
+                                <asp:ContentPlaceHolder ID="Content" runat="server" />
+           <%-- <div class="logo_content">
+				
+			</div>--%>
+                            </dx:PanelContent>
+                        </PanelCollection>
+                    </dx:ASPxPanel>
+                </form>
+            </div>
+        </div>
+
+        <div class="shadow"></div>
+        <div class="white_content">
+            <div class="top_content">
+                <div class="header">
+                    <div class="coming_soon">
+                        <p class="c_soon">¿En qué
+                            <br />
+                            <strong>idioma quiere</strong>
+                            <br />
+                            que se lo digamos?</p>
+                    </div>
+
+                    <ul class="social">
+                        <li><a href="#" class="googleplus">google plus</a></li>
+                        <li><a href="#" class="twitter">twitter</a></li>
+                        <li><a href="https://www.facebook.com/esticuba/" class="facebook">facebook</a></li>
+                        <li><a href="mailto:contacto@esti.cu" class="email">email</a></li>
+                        <li><a href="#" class="youtube">youtube</a></li>
+                        <%--<li><a href="#" class="pinterest">pinterest</a></li>--%>
+                    </ul>
+
+                    <div class="copyright">
+                        <p>Copyright 2015.
+                            <br />
+                            Equipo de Desarrollo de Aplicaciones del ESTI.
+                            <br />
+                            <span>Departamento de <strong>IT</strong></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

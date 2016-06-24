@@ -1,0 +1,18 @@
+<%@ Master Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="IntranetApp.MainMaster" %>
+<%--<asp:Content ID="sking2" ContentPlaceHolderID="sking" runat="server">
+    <asp:ContentPlaceHolder ID="css" runat="server" />
+</asp:Content>--%>
+
+<asp:Content ID="scripting" ContentPlaceHolderID="scripting" runat="server">
+    <script type="text/javascript" src="Content/js/jquery.min.js"></script>
+    <script type="text/javascript" src="Content/js/cufon-yui.js"></script>
+    <script type="text/javascript" src="Content/js/Comfortaa_250-Comfortaa_700.font.js"></script>
+    <script type="text/javascript">
+        Cufon.replace('h1', { fontFamily: 'Comfortaa' });
+        Cufon.replace('p.c_soon strong', { fontFamily: 'Comfortaa' });
+    </script>
+</asp:Content>
+<%-- DXCOMMENT: Page Main.master is a master page that contains central area layout --%>
+<asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
+    <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+</asp:Content>

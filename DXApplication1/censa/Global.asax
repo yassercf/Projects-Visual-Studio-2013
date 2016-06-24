@@ -1,0 +1,1 @@
+<%@ Application Codebehind="Global.asax.cs" Inherits="censa.Global_asax" Language="C#" %>

@@ -1,0 +1,11 @@
+e:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\censa.dll.config
+e:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\censa.dll
+e:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\censa.pdb
+e:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\obj\Debug\censa.dll
+e:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\obj\Debug\censa.pdb
+e:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\EntityFramework.dll
+e:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\EntityFramework.SqlServer.dll
+e:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\EntityFramework.xml
+e:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\EntityFramework.SqlServer.xml
+e:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\obj\Debug\censa.dll.licenses
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\obj\Debug\censa.csprojResolveAssemblyReference.cache
