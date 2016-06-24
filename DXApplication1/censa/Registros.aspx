@@ -6,6 +6,8 @@
         <dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="ASPxLabel" Font-Size="X-Large" Font-Bold="True" >
         </dx:ASPxLabel>
     </h3>
+    <dx:ASPxLabel ID="labelHorario" runat="server" Text="" Font-Size="Small" Font-Bold="True" RightToLeft="False" Width="100%">
+    </dx:ASPxLabel>
     <div class="bs-example4" data-example-id="contextual-table">
         <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="DataUserMarks" Width="100%">
             <SettingsPager PageSize="15">
@@ -39,15 +41,6 @@
                     <CellStyle HorizontalAlign="Center" VerticalAlign="Middle">
                     </CellStyle>
                 </dx:GridViewDataTimeEditColumn>
-                <dx:GridViewBandColumn Caption="Horarios" VisibleIndex="7">
-                    <Columns>
-                        <dx:GridViewDataComboBoxColumn VisibleIndex="0">
-                            <PropertiesComboBox DataSourceID="SqlDataSource1" TextField="horaEntrada" DisplayFormatString="t"></PropertiesComboBox>
-                        </dx:GridViewDataComboBoxColumn>
-
-                    </Columns>
-                </dx:GridViewBandColumn>
-
             </Columns>
             <Paddings Padding="0px" />
             <BorderBottom BorderWidth="1px" />

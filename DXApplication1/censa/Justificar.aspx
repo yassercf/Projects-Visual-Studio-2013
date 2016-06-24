@@ -1,11 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="Justificar.aspx.cs" Inherits="censa.Justificar" %>
 
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
-    <h3 class="blank1">Incidencias de 
+    <h3 class="blank1">Justificar Incidencias de 
         <dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="ASPxLabel" Font-Size="X-Large" Font-Bold="True">
         </dx:ASPxLabel>
     </h3>
-    <div class="bs-example4" data-example-id="contextual-table">
+     
+    <div class="bs-example4" data-example-id="contextual-table">       
+  
         <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="DataIncidenciasAll" KeyFieldName="id" Width="100%">
             <SettingsPager PageSize="15">
             </SettingsPager>

@@ -16,7 +16,10 @@ namespace censa
                 ASPxLabel1.Text = RootMaster.MonthName(((DateTime)Session["fechaActual"]).Month);
             }
             else { Server.Transfer("Default.aspx"); }
-            
+            ASPxLabel1.Text = RootMaster.MonthName(((DateTime)Session["fechaActual"]).Month);
+            bioEntities bio = new bioEntities();
+            Configuracion_Horario h = bio.Configuracion_Horario.Where(x => x.id == 1).Single();
+            labelHorario.Text = "El horario de trabajo es de: "+ h.horaEntrada + " a: " + h.horaSalida;
         }
 
         

@@ -16,6 +16,9 @@ namespace censa
                 ASPxLabel1.Text = RootMaster.MonthName(((DateTime)Session["fechaActual"]).Month);
             }
             else { Server.Transfer("Default.aspx"); }
+            ASPxLabel1.Text = RootMaster.MonthName(((DateTime)Session["fechaActual"]).Month);
+            
+            
         }
     }
 }
