@@ -13,22 +13,22 @@ namespace censa {
     public partial class RootMaster {
         
         /// <summary>
-        /// Body control.
+        /// Image1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Body;
+        protected global::System.Web.UI.WebControls.Image Image1;
         
         /// <summary>
-        /// notification_inci control.
+        /// HyperLink1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxLabel notification_inci;
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
         
         /// <summary>
         /// notification_header control.

@@ -40,6 +40,7 @@ namespace censa
         public virtual DbSet<DeptUsedSchs> DeptUsedSchs { get; set; }
         public virtual DbSet<FaceTemp> FaceTemp { get; set; }
         public virtual DbSet<HOLIDAYS> HOLIDAYS { get; set; }
+        public virtual DbSet<Incidencia> Incidencia { get; set; }
         public virtual DbSet<LeaveClass> LeaveClass { get; set; }
         public virtual DbSet<LeaveClass1> LeaveClass1 { get; set; }
         public virtual DbSet<Machines> Machines { get; set; }
@@ -49,6 +50,7 @@ namespace censa
         public virtual DbSet<SchClass> SchClass { get; set; }
         public virtual DbSet<SECURITYDETAILS> SECURITYDETAILS { get; set; }
         public virtual DbSet<SHIFT> SHIFT { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<SystemLog> SystemLog { get; set; }
         public virtual DbSet<TBSMSALLOT> TBSMSALLOT { get; set; }
         public virtual DbSet<TBSMSINFO> TBSMSINFO { get; set; }
@@ -66,35 +68,7 @@ namespace censa
         public virtual DbSet<EmOpLog> EmOpLog { get; set; }
         public virtual DbSet<ServerLog> ServerLog { get; set; }
         public virtual DbSet<UsersMachines> UsersMachines { get; set; }
-        public virtual DbSet<Configuracion_Horario> Configuracion_Horario { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Incidencia> Incidencia { get; set; }
-    
-        public virtual ObjectResult<spGetUserMarks_Result> spGetUserMarks(Nullable<int> userid, Nullable<System.DateTime> fecha)
-        {
-            var useridParameter = userid.HasValue ?
-                new ObjectParameter("userid", userid) :
-                new ObjectParameter("userid", typeof(int));
-    
-            var fechaParameter = fecha.HasValue ?
-                new ObjectParameter("fecha", fecha) :
-                new ObjectParameter("fecha", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetUserMarks_Result>("spGetUserMarks", useridParameter, fechaParameter);
-        }
-    
-        public virtual ObjectResult<spGetUserInc_Result> spGetUserInc(Nullable<int> userid, Nullable<System.DateTime> fecha)
-        {
-            var useridParameter = userid.HasValue ?
-                new ObjectParameter("userid", userid) :
-                new ObjectParameter("userid", typeof(int));
-    
-            var fechaParameter = fecha.HasValue ?
-                new ObjectParameter("fecha", fecha) :
-                new ObjectParameter("fecha", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetUserInc_Result>("spGetUserInc", useridParameter, fechaParameter);
-        }
+        public virtual DbSet<roles> roles { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
@@ -202,6 +176,62 @@ namespace censa
         public virtual int spGetAusencias()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spGetAusencias");
+        }
+    
+        public virtual ObjectResult<spGetDptoInc_Result> spGetDptoInc(Nullable<int> departamento, Nullable<System.DateTime> fecha)
+        {
+            var departamentoParameter = departamento.HasValue ?
+                new ObjectParameter("departamento", departamento) :
+                new ObjectParameter("departamento", typeof(int));
+    
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("fecha", fecha) :
+                new ObjectParameter("fecha", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetDptoInc_Result>("spGetDptoInc", departamentoParameter, fechaParameter);
+        }
+    
+        public virtual ObjectResult<spGetUserInc_Result> spGetUserInc(Nullable<int> userid, Nullable<System.DateTime> fecha)
+        {
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
+    
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("fecha", fecha) :
+                new ObjectParameter("fecha", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetUserInc_Result>("spGetUserInc", useridParameter, fechaParameter);
+        }
+    
+        public virtual ObjectResult<spGetUserMarks_Result> spGetUserMarks(Nullable<int> userid, Nullable<System.DateTime> fecha)
+        {
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
+    
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("fecha", fecha) :
+                new ObjectParameter("fecha", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetUserMarks_Result>("spGetUserMarks", useridParameter, fechaParameter);
+        }
+    
+        public virtual int spUpdateJustificarInc(Nullable<int> inci, Nullable<int> tipoJustificacion, Nullable<bool> justificado)
+        {
+            var inciParameter = inci.HasValue ?
+                new ObjectParameter("inci", inci) :
+                new ObjectParameter("inci", typeof(int));
+    
+            var tipoJustificacionParameter = tipoJustificacion.HasValue ?
+                new ObjectParameter("tipoJustificacion", tipoJustificacion) :
+                new ObjectParameter("tipoJustificacion", typeof(int));
+    
+            var justificadoParameter = justificado.HasValue ?
+                new ObjectParameter("justificado", justificado) :
+                new ObjectParameter("justificado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpdateJustificarInc", inciParameter, tipoJustificacionParameter, justificadoParameter);
         }
     }
 }

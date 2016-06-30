@@ -11,13 +11,18 @@ namespace censa {
             bioEntities bio = new bioEntities();
             string username = RootMaster.CurrentUserName;
             USERINFO user = bio.USERINFO.Where(q => q.TITLE == username).Single();
-            Session["userid"] = user.USERID;           
+            Session["userid"] = user.USERID;
+            Session["dpto"] = user.DEFAULTDEPTID;
+            Session["foto"] = user.PHOTO;
+            Session["roll"] = user.privilege;
+            Session["name"] = user.NAME;
             Session["fechaActual"] = DateTime.Now;
+
             //Session["fechaTitulo"] = DateTime.Now.ToString("mm/yyyy");
             //ASPxHyperLink1.Text = user.fullname;
             //ASPxHyperLink1.NavigateUrl = "/Admin/apps.aspx"; 
-
             ASPxLabel1.Text = RootMaster.MonthName(((DateTime)Session["fechaActual"]).Month);
+
         }
 
         

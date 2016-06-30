@@ -16,7 +16,6 @@ namespace censa
         public Nullable<int> dia { get; set; }
         public Nullable<System.DateTime> fullfecha { get; set; }
         public string nombre { get; set; }
-        public string usuario { get; set; }
         public Nullable<System.TimeSpan> entrada { get; set; }
         public Nullable<System.TimeSpan> salida { get; set; }
     }

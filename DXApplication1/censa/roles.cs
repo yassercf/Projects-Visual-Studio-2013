@@ -12,11 +12,9 @@ namespace censa
     using System;
     using System.Collections.Generic;
     
-    public partial class Configuracion_Horario
+    public partial class roles
     {
         public int id { get; set; }
-        public System.TimeSpan horaEntrada { get; set; }
-        public System.TimeSpan horaSalida { get; set; }
-        public Nullable<bool> activo { get; set; }
+        public string descripcion { get; set; }
     }
 }

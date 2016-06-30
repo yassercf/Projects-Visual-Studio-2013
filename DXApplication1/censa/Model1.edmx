@@ -122,15 +122,6 @@
           <Property Name="sn" Type="varchar" MaxLength="20" />
           <Property Name="UserExtFmt" Type="smallint" />
         </EntityType>
-        <EntityType Name="Configuracion_Horario">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="horaEntrada" Type="time" Precision="7" Nullable="false" />
-          <Property Name="horaSalida" Type="time" Precision="7" Nullable="false" />
-          <Property Name="activo" Type="bit" />
-        </EntityType>
         <EntityType Name="DEPARTMENTS">
           <Key>
             <PropertyRef Name="DEPTID" />
@@ -178,13 +169,6 @@ warning 6002: The table/view 'bio.dbo.EmOpLog' does not have a primary key defin
           <Property Name="Params4" Type="int" />
           <Property Name="SensorId" Type="varchar" MaxLength="5" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'bio.dbo.EXCNOTES' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="EXCNOTES">
-          <Property Name="USERID" Type="int" />
-          <Property Name="ATTDATE" Type="datetime" />
-          <Property Name="NOTES" Type="varchar" MaxLength="200" />
-        </EntityType>-->
         <EntityType Name="FaceTemp">
           <Key>
             <PropertyRef Name="TEMPLATEID" />
@@ -339,6 +323,13 @@ warning 6013: The table/view 'bio.dbo.EXCNOTES' does not have a primary key defi
           <Property Name="CalcLast" Type="smallint" />
           <Property Name="Notes" Type="image" />
         </EntityType>
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="255" />
+        </EntityType>
         <EntityType Name="SchClass">
           <Key>
             <PropertyRef Name="schClassid" />
@@ -440,12 +431,6 @@ warning 6002: The table/view 'bio.dbo.ServerLog' does not have a primary key def
           <Property Name="LogTag" Type="smallint" />
           <Property Name="LogDescr" Type="varchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'bio.dbo.TBKEY' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="TBKEY">
-          <Property Name="PreName" Type="varchar" MaxLength="12" />
-          <Property Name="ONEKEY" Type="int" />
-        </EntityType>-->
         <EntityType Name="TBSMSALLOT">
           <Key>
             <PropertyRef Name="REFERENCE" />
@@ -713,6 +698,10 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spGetAusencias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spGetDptoInc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="departamento" Type="int" Mode="In" />
+          <Parameter Name="fecha" Type="date" Mode="In" />
+        </Function>
         <Function Name="spGetUserInc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userid" Type="int" Mode="In" />
           <Parameter Name="fecha" Type="date" Mode="In" />
@@ -720,6 +709,11 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
         <Function Name="spGetUserMarks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userid" Type="int" Mode="In" />
           <Parameter Name="fecha" Type="date" Mode="In" />
+        </Function>
+        <Function Name="spUpdateJustificarInc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="inci" Type="int" Mode="In" />
+          <Parameter Name="tipoJustificacion" Type="int" Mode="In" />
+          <Parameter Name="justificado" Type="bit" Mode="In" />
         </Function>
         <EntityContainer Name="bioModelStoreContainer">
           <EntitySet Name="ACGroup" EntityType="Self.ACGroup" Schema="dbo" store:Type="Tables" />
@@ -731,7 +725,6 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
           <EntitySet Name="AUTHDEVICE" EntityType="Self.AUTHDEVICE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHECKEXACT" EntityType="Self.CHECKEXACT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHECKINOUT" EntityType="Self.CHECKINOUT" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Configuracion_Horario" EntityType="Self.Configuracion_Horario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DEPARTMENTS" EntityType="Self.DEPARTMENTS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DeptUsedSchs" EntityType="Self.DeptUsedSchs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FaceTemp" EntityType="Self.FaceTemp" Schema="dbo" store:Type="Tables" />
@@ -743,6 +736,7 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
           <EntitySet Name="NUM_RUN" EntityType="Self.NUM_RUN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NUM_RUN_DEIL" EntityType="Self.NUM_RUN_DEIL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ReportItem" EntityType="Self.ReportItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SchClass" EntityType="Self.SchClass" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SECURITYDETAILS" EntityType="Self.SECURITYDETAILS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SHIFT" EntityType="Self.SHIFT" Schema="dbo" store:Type="Tables" />
@@ -806,6 +800,106 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="bioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="bioEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACGroup" EntityType="bioModel.ACGroup" />
+          <EntitySet Name="ACTimeZones" EntityType="bioModel.ACTimeZones" />
+          <EntitySet Name="ACUnlockComb" EntityType="bioModel.ACUnlockComb" />
+          <EntitySet Name="AlarmLog" EntityType="bioModel.AlarmLog" />
+          <EntitySet Name="AttParam" EntityType="bioModel.AttParam" />
+          <EntitySet Name="AuditedExc" EntityType="bioModel.AuditedExc" />
+          <EntitySet Name="AUTHDEVICE" EntityType="bioModel.AUTHDEVICE" />
+          <EntitySet Name="CHECKEXACT" EntityType="bioModel.CHECKEXACT" />
+          <EntitySet Name="CHECKINOUT" EntityType="bioModel.CHECKINOUT" />
+          <EntitySet Name="DEPARTMENTS" EntityType="bioModel.DEPARTMENTS" />
+          <EntitySet Name="DeptUsedSchs" EntityType="bioModel.DeptUsedSchs" />
+          <EntitySet Name="FaceTemp" EntityType="bioModel.FaceTemp" />
+          <EntitySet Name="HOLIDAYS" EntityType="bioModel.HOLIDAYS" />
+          <EntitySet Name="Incidencia" EntityType="bioModel.Incidencia" />
+          <EntitySet Name="LeaveClass" EntityType="bioModel.LeaveClass" />
+          <EntitySet Name="LeaveClass1" EntityType="bioModel.LeaveClass1" />
+          <EntitySet Name="Machines" EntityType="bioModel.Machines" />
+          <EntitySet Name="NUM_RUN" EntityType="bioModel.NUM_RUN" />
+          <EntitySet Name="NUM_RUN_DEIL" EntityType="bioModel.NUM_RUN_DEIL" />
+          <EntitySet Name="ReportItem" EntityType="bioModel.ReportItem" />
+          <EntitySet Name="SchClass" EntityType="bioModel.SchClass" />
+          <EntitySet Name="SECURITYDETAILS" EntityType="bioModel.SECURITYDETAILS" />
+          <EntitySet Name="SHIFT" EntityType="bioModel.SHIFT" />
+          <EntitySet Name="sysdiagrams" EntityType="bioModel.sysdiagrams" />
+          <EntitySet Name="SystemLog" EntityType="bioModel.SystemLog" />
+          <EntitySet Name="TBSMSALLOT" EntityType="bioModel.TBSMSALLOT" />
+          <EntitySet Name="TBSMSINFO" EntityType="bioModel.TBSMSINFO" />
+          <EntitySet Name="TEMPLATE" EntityType="bioModel.TEMPLATE" />
+          <EntitySet Name="TipoIncidencia" EntityType="bioModel.TipoIncidencia" />
+          <EntitySet Name="TipoJustificacion" EntityType="bioModel.TipoJustificacion" />
+          <EntitySet Name="USER_OF_RUN" EntityType="bioModel.USER_OF_RUN" />
+          <EntitySet Name="USER_SPEDAY" EntityType="bioModel.USER_SPEDAY" />
+          <EntitySet Name="USER_TEMP_SCH" EntityType="bioModel.USER_TEMP_SCH" />
+          <EntitySet Name="UserACMachines" EntityType="bioModel.UserACMachines" />
+          <EntitySet Name="UserACPrivilege" EntityType="bioModel.UserACPrivilege" />
+          <EntitySet Name="USERINFO" EntityType="bioModel.USERINFO" />
+          <EntitySet Name="UserUpdates" EntityType="bioModel.UserUpdates" />
+          <EntitySet Name="UserUsedSClasses" EntityType="bioModel.UserUsedSClasses" />
+          <EntitySet Name="EmOpLog" EntityType="bioModel.EmOpLog" />
+          <EntitySet Name="ServerLog" EntityType="bioModel.ServerLog" />
+          <EntitySet Name="UsersMachines" EntityType="bioModel.UsersMachines" />
+          <AssociationSet Name="FK__Incidenci__tipoI__6EC0713C" Association="bioModel.FK__Incidenci__tipoI__6EC0713C">
+            <End Role="TipoIncidencia" EntitySet="TipoIncidencia" />
+            <End Role="Incidencia" EntitySet="Incidencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Incidenci__tipoJ__6FB49575" Association="bioModel.FK__Incidenci__tipoJ__6FB49575">
+            <End Role="TipoJustificacion" EntitySet="TipoJustificacion" />
+            <End Role="Incidencia" EntitySet="Incidencia" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(bioModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(bioModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="spGetAusencias" />
+          <FunctionImport Name="spGetDptoInc" ReturnType="Collection(bioModel.spGetDptoInc_Result)">
+            <Parameter Name="departamento" Mode="In" Type="Int32" />
+            <Parameter Name="fecha" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spGetUserInc" ReturnType="Collection(bioModel.spGetUserInc_Result)">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="fecha" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spGetUserMarks" ReturnType="Collection(bioModel.spGetUserMarks_Result)">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="fecha" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spUpdateJustificarInc">
+            <Parameter Name="inci" Mode="In" Type="Int32" />
+            <Parameter Name="tipoJustificacion" Mode="In" Type="Int32" />
+            <Parameter Name="justificado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <EntitySet Name="roles" EntityType="bioModel.roles" />
+        </EntityContainer>
         <EntityType Name="ACGroup">
           <Key>
             <PropertyRef Name="GroupID" />
@@ -866,9 +960,9 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
           <Key>
             <PropertyRef Name="PARANAME" />
           </Key>
-          <Property Name="PARANAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PARANAME" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="PARATYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="PARAVALUE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PARAVALUE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="AuditedExc">
           <Key>
@@ -923,6 +1017,7 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
           <Property Name="sn" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="UserExtFmt" Type="Int16" />
         </EntityType>
+        
         <EntityType Name="DEPARTMENTS">
           <Key>
             <PropertyRef Name="DEPTID" />
@@ -985,17 +1080,33 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
           <Property Name="DeptID" Type="Int16" />
           <Property Name="timezone" Type="Int32" />
         </EntityType>
+        <EntityType Name="Incidencia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Precision="0" />
+          <Property Name="horaE" Type="Time" Precision="7" />
+          <Property Name="horaS" Type="Time" Precision="7" />
+          <Property Name="usuario" Type="Int32" />
+          <Property Name="tipoIncidencia" Type="Int32" />
+          <Property Name="tipoJustificacion" Type="Int32" />
+          <Property Name="observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="justificado" Type="Boolean" />
+          <NavigationProperty Name="TipoIncidencia1" Relationship="bioModel.FK__Incidenci__tipoI__6EC0713C" FromRole="Incidencia" ToRole="TipoIncidencia" />
+          <NavigationProperty Name="TipoJustificacion1" Relationship="bioModel.FK__Incidenci__tipoJ__6FB49575" FromRole="Incidencia" ToRole="TipoJustificacion" />
+        </EntityType>
         <EntityType Name="LeaveClass">
           <Key>
             <PropertyRef Name="LeaveId" />
           </Key>
           <Property Name="LeaveId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LeaveName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LeaveName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="MinUnit" Type="Double" Nullable="false" />
           <Property Name="Unit" Type="Int16" Nullable="false" />
           <Property Name="RemaindProc" Type="Int16" Nullable="false" />
           <Property Name="RemaindCount" Type="Int16" Nullable="false" />
-          <Property Name="ReportSymbol" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ReportSymbol" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="Deduct" Type="Double" Nullable="false" />
           <Property Name="Color" Type="Int32" Nullable="false" />
           <Property Name="Classify" Type="Int16" Nullable="false" />
@@ -1005,12 +1116,12 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
             <PropertyRef Name="LeaveId" />
           </Key>
           <Property Name="LeaveId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LeaveName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LeaveName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="MinUnit" Type="Double" Nullable="false" />
           <Property Name="Unit" Type="Int16" Nullable="false" />
           <Property Name="RemaindProc" Type="Int16" Nullable="false" />
           <Property Name="RemaindCount" Type="Int16" Nullable="false" />
-          <Property Name="ReportSymbol" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ReportSymbol" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="Deduct" Type="Double" Nullable="false" />
           <Property Name="LeaveType" Type="Int16" Nullable="false" />
           <Property Name="Color" Type="Int32" Nullable="false" />
@@ -1022,7 +1133,7 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MachineAlias" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MachineAlias" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="ConnectType" Type="Int32" Nullable="false" />
           <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="SerialPort" Type="Int32" />
@@ -1057,7 +1168,7 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
           </Key>
           <Property Name="NUM_RUNID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OLDID" Type="Int32" />
-          <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="STARTDATE" Type="DateTime" Precision="3" />
           <Property Name="ENDDATE" Type="DateTime" Precision="3" />
           <Property Name="CYLE" Type="Int16" />
@@ -1086,7 +1197,7 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
           <Property Name="ShowIt" Type="Int16" />
           <Property Name="RIName" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="UnitName" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
-          <Property Name="Formula" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="Formula" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
           <Property Name="CalcBySchClass" Type="Int16" />
           <Property Name="StatisticMethod" Type="Int16" />
           <Property Name="CalcLast" Type="Int16" />
@@ -1097,7 +1208,7 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
             <PropertyRef Name="schClassid" />
           </Key>
           <Property Name="schClassid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="schName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="schName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="LateMinutes" Type="Int32" />
@@ -1154,6 +1265,16 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
           <Property Name="CYCLE" Type="Int16" />
           <Property Name="UNITS" Type="Int16" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="SystemLog">
           <Key>
             <PropertyRef Name="ID" />
@@ -1179,7 +1300,7 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
             <PropertyRef Name="REFERENCE" />
           </Key>
           <Property Name="REFERENCE" Type="Int32" Nullable="false" />
-          <Property Name="SMSID" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SMSID" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
           <Property Name="SMSINDEX" Type="Int32" Nullable="false" />
           <Property Name="SMSTYPE" Type="Int32" />
           <Property Name="SMSCONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -1194,7 +1315,7 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
           <Property Name="TEMPLATEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="USERID" Type="Int32" Nullable="false" />
           <Property Name="FINGERID" Type="Int32" Nullable="false" />
-          <Property Name="TEMPLATE1" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="TEMPLATE1" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
           <Property Name="TEMPLATE2" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="TEMPLATE3" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="BITMAPPICTURE" Type="Binary" MaxLength="Max" FixedLength="false" />
@@ -1292,7 +1413,7 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
             <PropertyRef Name="USERID" />
           </Key>
           <Property Name="USERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BADGENUMBER" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BADGENUMBER" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
           <Property Name="SSN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="NAME" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="GENDER" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
@@ -1381,7 +1502,7 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
             <PropertyRef Name="EVENTTIME" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EVENT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EVENT" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="USERID" Type="Int32" Nullable="false" />
           <Property Name="EnrollNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="parameter" Type="Int16" />
@@ -1398,162 +1519,6 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="USERID" Type="Int32" Nullable="false" />
           <Property Name="DEVICEID" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityContainer Name="bioEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ACGroup" EntityType="Self.ACGroup" />
-          <EntitySet Name="ACTimeZones" EntityType="Self.ACTimeZones" />
-          <EntitySet Name="ACUnlockComb" EntityType="Self.ACUnlockComb" />
-          <EntitySet Name="AlarmLog" EntityType="Self.AlarmLog" />
-          <EntitySet Name="AttParam" EntityType="Self.AttParam" />
-          <EntitySet Name="AuditedExc" EntityType="Self.AuditedExc" />
-          <EntitySet Name="AUTHDEVICE" EntityType="Self.AUTHDEVICE" />
-          <EntitySet Name="CHECKEXACT" EntityType="Self.CHECKEXACT" />
-          <EntitySet Name="CHECKINOUT" EntityType="Self.CHECKINOUT" />
-          <EntitySet Name="DEPARTMENTS" EntityType="Self.DEPARTMENTS" />
-          <EntitySet Name="DeptUsedSchs" EntityType="Self.DeptUsedSchs" />
-          <EntitySet Name="FaceTemp" EntityType="Self.FaceTemp" />
-          <EntitySet Name="HOLIDAYS" EntityType="Self.HOLIDAYS" />
-          <EntitySet Name="LeaveClass" EntityType="Self.LeaveClass" />
-          <EntitySet Name="LeaveClass1" EntityType="Self.LeaveClass1" />
-          <EntitySet Name="Machines" EntityType="Self.Machines" />
-          <EntitySet Name="NUM_RUN" EntityType="Self.NUM_RUN" />
-          <EntitySet Name="NUM_RUN_DEIL" EntityType="Self.NUM_RUN_DEIL" />
-          <EntitySet Name="ReportItem" EntityType="Self.ReportItem" />
-          <EntitySet Name="SchClass" EntityType="Self.SchClass" />
-          <EntitySet Name="SECURITYDETAILS" EntityType="Self.SECURITYDETAILS" />
-          <EntitySet Name="SHIFT" EntityType="Self.SHIFT" />
-          <EntitySet Name="SystemLog" EntityType="Self.SystemLog" />
-          <EntitySet Name="TBSMSALLOT" EntityType="Self.TBSMSALLOT" />
-          <EntitySet Name="TBSMSINFO" EntityType="Self.TBSMSINFO" />
-          <EntitySet Name="TEMPLATE" EntityType="Self.TEMPLATE" />
-          <EntitySet Name="TipoIncidencia" EntityType="Self.TipoIncidencia" />
-          <EntitySet Name="TipoJustificacion" EntityType="Self.TipoJustificacion" />
-          <EntitySet Name="USER_OF_RUN" EntityType="Self.USER_OF_RUN" />
-          <EntitySet Name="USER_SPEDAY" EntityType="Self.USER_SPEDAY" />
-          <EntitySet Name="USER_TEMP_SCH" EntityType="Self.USER_TEMP_SCH" />
-          <EntitySet Name="UserACMachines" EntityType="Self.UserACMachines" />
-          <EntitySet Name="UserACPrivilege" EntityType="Self.UserACPrivilege" />
-          <EntitySet Name="USERINFO" EntityType="Self.USERINFO" />
-          <EntitySet Name="UserUpdates" EntityType="Self.UserUpdates" />
-          <EntitySet Name="UserUsedSClasses" EntityType="Self.UserUsedSClasses" />
-          <EntitySet Name="EmOpLog" EntityType="Self.EmOpLog" />
-          <EntitySet Name="ServerLog" EntityType="Self.ServerLog" />
-          <EntitySet Name="UsersMachines" EntityType="Self.UsersMachines" />
-          <FunctionImport Name="spGetUserMarks" ReturnType="Collection(bioModel.spGetUserMarks_Result)">
-            <Parameter Name="userid" Mode="In" Type="Int32" />
-            <Parameter Name="fecha" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="spGetUserInc" ReturnType="Collection(bioModel.spGetUserInc_Result)">
-            <Parameter Name="userid" Mode="In" Type="Int32" />
-            <Parameter Name="fecha" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <EntitySet Name="Configuracion_Horario" EntityType="bioModel.Configuracion_Horario" />
-          <EntitySet Name="sysdiagrams" EntityType="bioModel.sysdiagrams" />
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(bioModel.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(bioModel.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="spGetAusencias" />
-          <EntitySet Name="Incidencia" EntityType="bioModel.Incidencia" />
-          <AssociationSet Name="FK__Incidenci__tipoI__6EC0713C" Association="bioModel.FK__Incidenci__tipoI__6EC0713C">
-            <End Role="TipoIncidencia" EntitySet="TipoIncidencia" />
-            <End Role="Incidencia" EntitySet="Incidencia" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Incidenci__tipoJ__6FB49575" Association="bioModel.FK__Incidenci__tipoJ__6FB49575">
-            <End Role="TipoJustificacion" EntitySet="TipoJustificacion" />
-            <End Role="Incidencia" EntitySet="Incidencia" />
-          </AssociationSet>
-        </EntityContainer>
-        <ComplexType Name="spGetUserMarks_Result">
-          <Property Type="Int32" Name="dia" Nullable="true" />
-          <Property Type="DateTime" Name="fullfecha" Nullable="true" />
-          <Property Type="String" Name="nombre" Nullable="true" MaxLength="40" />
-          <Property Type="String" Name="usuario" Nullable="true" MaxLength="20" />
-          <Property Type="Time" Name="entrada" Nullable="true" />
-          <Property Type="Time" Name="salida" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="spGetUserInc_Result">
-          <Property Type="String" Name="NAME" Nullable="true" MaxLength="40" />
-          <Property Type="DateTime" Name="fecha" Nullable="true" />
-          <Property Type="Time" Name="horaE" Nullable="true" />
-          <Property Type="Time" Name="horaS" Nullable="true" />
-          <Property Type="Int32" Name="tipoIncidencia" Nullable="true" />
-          <Property Type="Int32" Name="tipoJustificacion" Nullable="true" />
-          <Property Type="String" Name="observaciones" Nullable="true" MaxLength="Max" />
-          <Property Type="Boolean" Name="justificado" Nullable="true" />
-          <Property Type="Int32" Name="id" Nullable="false" />
-        </ComplexType>
-        <EntityType Name="Configuracion_Horario">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="horaEntrada" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="horaSalida" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="activo" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
-        <EntityType Name="Incidencia">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fecha" Type="DateTime" Precision="0" />
-          <Property Name="horaE" Type="Time" Precision="7" />
-          <Property Name="horaS" Type="Time" Precision="7" />
-          <Property Name="usuario" Type="Int32" />
-          <Property Name="tipoIncidencia" Type="Int32" />
-          <Property Name="tipoJustificacion" Type="Int32" />
-          <Property Name="observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="justificado" Type="Boolean" />
-          <NavigationProperty Name="TipoIncidencia1" Relationship="bioModel.FK__Incidenci__tipoI__6EC0713C" FromRole="Incidencia" ToRole="TipoIncidencia" />
-          <NavigationProperty Name="TipoJustificacion1" Relationship="bioModel.FK__Incidenci__tipoJ__6FB49575" FromRole="Incidencia" ToRole="TipoJustificacion" />
         </EntityType>
         <Association Name="FK__Incidenci__tipoI__6EC0713C">
           <End Type="bioModel.TipoIncidencia" Role="TipoIncidencia" Multiplicity="0..1" />
@@ -1579,6 +1544,53 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spGetDptoInc_Result">
+          <Property Type="String" Name="NAME" Nullable="true" MaxLength="40" />
+          <Property Type="DateTime" Name="fecha" Nullable="true" />
+          <Property Type="Time" Name="horaE" Nullable="true" />
+          <Property Type="Time" Name="horaS" Nullable="true" />
+          <Property Type="Int32" Name="tipoIncidencia" Nullable="true" />
+          <Property Type="Int32" Name="tipoJustificacion" Nullable="true" />
+          <Property Type="String" Name="observaciones" Nullable="true" MaxLength="Max" />
+          <Property Type="Boolean" Name="justificado" Nullable="true" />
+          <Property Type="Int32" Name="id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spGetUserInc_Result">
+          <Property Type="String" Name="NAME" Nullable="true" MaxLength="40" />
+          <Property Type="DateTime" Name="fecha" Nullable="true" />
+          <Property Type="Time" Name="horaE" Nullable="true" />
+          <Property Type="Time" Name="horaS" Nullable="true" />
+          <Property Type="Int32" Name="tipoIncidencia" Nullable="true" />
+          <Property Type="Int32" Name="tipoJustificacion" Nullable="true" />
+          <Property Type="String" Name="observaciones" Nullable="true" MaxLength="Max" />
+          <Property Type="Boolean" Name="justificado" Nullable="true" />
+          <Property Type="Int32" Name="id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spGetUserMarks_Result">
+          <Property Type="Int32" Name="dia" Nullable="true" />
+          <Property Type="DateTime" Name="fullfecha" Nullable="true" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="40" />
+          <Property Type="Time" Name="entrada" Nullable="true" />
+          <Property Type="Time" Name="salida" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1588,645 +1600,380 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
           <EntitySetMapping Name="ACGroup">
             <EntityTypeMapping TypeName="bioModel.ACGroup">
               <MappingFragment StoreEntitySet="ACGroup">
-                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="TimeZone1" ColumnName="TimeZone1" />
-                <ScalarProperty Name="TimeZone2" ColumnName="TimeZone2" />
-                <ScalarProperty Name="TimeZone3" ColumnName="TimeZone3" />
-                <ScalarProperty Name="holidayvaild" ColumnName="holidayvaild" />
                 <ScalarProperty Name="verifystyle" ColumnName="verifystyle" />
+                <ScalarProperty Name="holidayvaild" ColumnName="holidayvaild" />
+                <ScalarProperty Name="TimeZone3" ColumnName="TimeZone3" />
+                <ScalarProperty Name="TimeZone2" ColumnName="TimeZone2" />
+                <ScalarProperty Name="TimeZone1" ColumnName="TimeZone1" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ACTimeZones">
             <EntityTypeMapping TypeName="bioModel.ACTimeZones">
               <MappingFragment StoreEntitySet="ACTimeZones">
-                <ScalarProperty Name="TimeZoneID" ColumnName="TimeZoneID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="SunStart" ColumnName="SunStart" />
-                <ScalarProperty Name="SunEnd" ColumnName="SunEnd" />
-                <ScalarProperty Name="MonStart" ColumnName="MonStart" />
-                <ScalarProperty Name="MonEnd" ColumnName="MonEnd" />
-                <ScalarProperty Name="TuesStart" ColumnName="TuesStart" />
-                <ScalarProperty Name="TuesEnd" ColumnName="TuesEnd" />
-                <ScalarProperty Name="WedStart" ColumnName="WedStart" />
-                <ScalarProperty Name="WedEnd" ColumnName="WedEnd" />
-                <ScalarProperty Name="ThursStart" ColumnName="ThursStart" />
-                <ScalarProperty Name="ThursEnd" ColumnName="ThursEnd" />
-                <ScalarProperty Name="FriStart" ColumnName="FriStart" />
-                <ScalarProperty Name="FriEnd" ColumnName="FriEnd" />
-                <ScalarProperty Name="SatStart" ColumnName="SatStart" />
                 <ScalarProperty Name="SatEnd" ColumnName="SatEnd" />
+                <ScalarProperty Name="SatStart" ColumnName="SatStart" />
+                <ScalarProperty Name="FriEnd" ColumnName="FriEnd" />
+                <ScalarProperty Name="FriStart" ColumnName="FriStart" />
+                <ScalarProperty Name="ThursEnd" ColumnName="ThursEnd" />
+                <ScalarProperty Name="ThursStart" ColumnName="ThursStart" />
+                <ScalarProperty Name="WedEnd" ColumnName="WedEnd" />
+                <ScalarProperty Name="WedStart" ColumnName="WedStart" />
+                <ScalarProperty Name="TuesEnd" ColumnName="TuesEnd" />
+                <ScalarProperty Name="TuesStart" ColumnName="TuesStart" />
+                <ScalarProperty Name="MonEnd" ColumnName="MonEnd" />
+                <ScalarProperty Name="MonStart" ColumnName="MonStart" />
+                <ScalarProperty Name="SunEnd" ColumnName="SunEnd" />
+                <ScalarProperty Name="SunStart" ColumnName="SunStart" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TimeZoneID" ColumnName="TimeZoneID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ACUnlockComb">
             <EntityTypeMapping TypeName="bioModel.ACUnlockComb">
               <MappingFragment StoreEntitySet="ACUnlockComb">
-                <ScalarProperty Name="UnlockCombID" ColumnName="UnlockCombID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Group01" ColumnName="Group01" />
-                <ScalarProperty Name="Group02" ColumnName="Group02" />
-                <ScalarProperty Name="Group03" ColumnName="Group03" />
-                <ScalarProperty Name="Group04" ColumnName="Group04" />
                 <ScalarProperty Name="Group05" ColumnName="Group05" />
+                <ScalarProperty Name="Group04" ColumnName="Group04" />
+                <ScalarProperty Name="Group03" ColumnName="Group03" />
+                <ScalarProperty Name="Group02" ColumnName="Group02" />
+                <ScalarProperty Name="Group01" ColumnName="Group01" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UnlockCombID" ColumnName="UnlockCombID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AlarmLog">
             <EntityTypeMapping TypeName="bioModel.AlarmLog">
               <MappingFragment StoreEntitySet="AlarmLog">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Operator" ColumnName="Operator" />
-                <ScalarProperty Name="EnrollNumber" ColumnName="EnrollNumber" />
-                <ScalarProperty Name="LogTime" ColumnName="LogTime" />
-                <ScalarProperty Name="MachineAlias" ColumnName="MachineAlias" />
                 <ScalarProperty Name="AlarmType" ColumnName="AlarmType" />
+                <ScalarProperty Name="MachineAlias" ColumnName="MachineAlias" />
+                <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+                <ScalarProperty Name="EnrollNumber" ColumnName="EnrollNumber" />
+                <ScalarProperty Name="Operator" ColumnName="Operator" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AttParam">
             <EntityTypeMapping TypeName="bioModel.AttParam">
               <MappingFragment StoreEntitySet="AttParam">
-                <ScalarProperty Name="PARANAME" ColumnName="PARANAME" />
-                <ScalarProperty Name="PARATYPE" ColumnName="PARATYPE" />
                 <ScalarProperty Name="PARAVALUE" ColumnName="PARAVALUE" />
+                <ScalarProperty Name="PARATYPE" ColumnName="PARATYPE" />
+                <ScalarProperty Name="PARANAME" ColumnName="PARANAME" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AuditedExc">
             <EntityTypeMapping TypeName="bioModel.AuditedExc">
               <MappingFragment StoreEntitySet="AuditedExc">
-                <ScalarProperty Name="AEID" ColumnName="AEID" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="CheckTime" ColumnName="CheckTime" />
-                <ScalarProperty Name="NewExcID" ColumnName="NewExcID" />
-                <ScalarProperty Name="IsLeave" ColumnName="IsLeave" />
-                <ScalarProperty Name="UName" ColumnName="UName" />
                 <ScalarProperty Name="UTime" ColumnName="UTime" />
+                <ScalarProperty Name="UName" ColumnName="UName" />
+                <ScalarProperty Name="IsLeave" ColumnName="IsLeave" />
+                <ScalarProperty Name="NewExcID" ColumnName="NewExcID" />
+                <ScalarProperty Name="CheckTime" ColumnName="CheckTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AEID" ColumnName="AEID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AUTHDEVICE">
             <EntityTypeMapping TypeName="bioModel.AUTHDEVICE">
               <MappingFragment StoreEntitySet="AUTHDEVICE">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="USERID" ColumnName="USERID" />
                 <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CHECKEXACT">
             <EntityTypeMapping TypeName="bioModel.CHECKEXACT">
               <MappingFragment StoreEntitySet="CHECKEXACT">
-                <ScalarProperty Name="EXACTID" ColumnName="EXACTID" />
-                <ScalarProperty Name="USERID" ColumnName="USERID" />
-                <ScalarProperty Name="CHECKTIME" ColumnName="CHECKTIME" />
-                <ScalarProperty Name="CHECKTYPE" ColumnName="CHECKTYPE" />
-                <ScalarProperty Name="ISADD" ColumnName="ISADD" />
-                <ScalarProperty Name="YUYIN" ColumnName="YUYIN" />
-                <ScalarProperty Name="ISMODIFY" ColumnName="ISMODIFY" />
-                <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
-                <ScalarProperty Name="INCOUNT" ColumnName="INCOUNT" />
-                <ScalarProperty Name="ISCOUNT" ColumnName="ISCOUNT" />
-                <ScalarProperty Name="MODIFYBY" ColumnName="MODIFYBY" />
                 <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="MODIFYBY" ColumnName="MODIFYBY" />
+                <ScalarProperty Name="ISCOUNT" ColumnName="ISCOUNT" />
+                <ScalarProperty Name="INCOUNT" ColumnName="INCOUNT" />
+                <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+                <ScalarProperty Name="ISMODIFY" ColumnName="ISMODIFY" />
+                <ScalarProperty Name="YUYIN" ColumnName="YUYIN" />
+                <ScalarProperty Name="ISADD" ColumnName="ISADD" />
+                <ScalarProperty Name="CHECKTYPE" ColumnName="CHECKTYPE" />
+                <ScalarProperty Name="CHECKTIME" ColumnName="CHECKTIME" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="EXACTID" ColumnName="EXACTID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CHECKINOUT">
             <EntityTypeMapping TypeName="bioModel.CHECKINOUT">
               <MappingFragment StoreEntitySet="CHECKINOUT">
-                <ScalarProperty Name="USERID" ColumnName="USERID" />
-                <ScalarProperty Name="CHECKTIME" ColumnName="CHECKTIME" />
-                <ScalarProperty Name="CHECKTYPE" ColumnName="CHECKTYPE" />
-                <ScalarProperty Name="VERIFYCODE" ColumnName="VERIFYCODE" />
-                <ScalarProperty Name="SENSORID" ColumnName="SENSORID" />
-                <ScalarProperty Name="Memoinfo" ColumnName="Memoinfo" />
-                <ScalarProperty Name="WorkCode" ColumnName="WorkCode" />
-                <ScalarProperty Name="sn" ColumnName="sn" />
                 <ScalarProperty Name="UserExtFmt" ColumnName="UserExtFmt" />
+                <ScalarProperty Name="sn" ColumnName="sn" />
+                <ScalarProperty Name="WorkCode" ColumnName="WorkCode" />
+                <ScalarProperty Name="Memoinfo" ColumnName="Memoinfo" />
+                <ScalarProperty Name="SENSORID" ColumnName="SENSORID" />
+                <ScalarProperty Name="VERIFYCODE" ColumnName="VERIFYCODE" />
+                <ScalarProperty Name="CHECKTYPE" ColumnName="CHECKTYPE" />
+                <ScalarProperty Name="CHECKTIME" ColumnName="CHECKTIME" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DEPARTMENTS">
             <EntityTypeMapping TypeName="bioModel.DEPARTMENTS">
               <MappingFragment StoreEntitySet="DEPARTMENTS">
-                <ScalarProperty Name="DEPTID" ColumnName="DEPTID" />
-                <ScalarProperty Name="DEPTNAME" ColumnName="DEPTNAME" />
-                <ScalarProperty Name="SUPDEPTID" ColumnName="SUPDEPTID" />
-                <ScalarProperty Name="InheritParentSch" ColumnName="InheritParentSch" />
-                <ScalarProperty Name="InheritDeptSch" ColumnName="InheritDeptSch" />
-                <ScalarProperty Name="InheritDeptSchClass" ColumnName="InheritDeptSchClass" />
-                <ScalarProperty Name="AutoSchPlan" ColumnName="AutoSchPlan" />
-                <ScalarProperty Name="InLate" ColumnName="InLate" />
-                <ScalarProperty Name="OutEarly" ColumnName="OutEarly" />
-                <ScalarProperty Name="InheritDeptRule" ColumnName="InheritDeptRule" />
-                <ScalarProperty Name="MinAutoSchInterval" ColumnName="MinAutoSchInterval" />
-                <ScalarProperty Name="RegisterOT" ColumnName="RegisterOT" />
-                <ScalarProperty Name="DefaultSchId" ColumnName="DefaultSchId" />
-                <ScalarProperty Name="ATT" ColumnName="ATT" />
-                <ScalarProperty Name="Holiday" ColumnName="Holiday" />
                 <ScalarProperty Name="OverTime" ColumnName="OverTime" />
+                <ScalarProperty Name="Holiday" ColumnName="Holiday" />
+                <ScalarProperty Name="ATT" ColumnName="ATT" />
+                <ScalarProperty Name="DefaultSchId" ColumnName="DefaultSchId" />
+                <ScalarProperty Name="RegisterOT" ColumnName="RegisterOT" />
+                <ScalarProperty Name="MinAutoSchInterval" ColumnName="MinAutoSchInterval" />
+                <ScalarProperty Name="InheritDeptRule" ColumnName="InheritDeptRule" />
+                <ScalarProperty Name="OutEarly" ColumnName="OutEarly" />
+                <ScalarProperty Name="InLate" ColumnName="InLate" />
+                <ScalarProperty Name="AutoSchPlan" ColumnName="AutoSchPlan" />
+                <ScalarProperty Name="InheritDeptSchClass" ColumnName="InheritDeptSchClass" />
+                <ScalarProperty Name="InheritDeptSch" ColumnName="InheritDeptSch" />
+                <ScalarProperty Name="InheritParentSch" ColumnName="InheritParentSch" />
+                <ScalarProperty Name="SUPDEPTID" ColumnName="SUPDEPTID" />
+                <ScalarProperty Name="DEPTNAME" ColumnName="DEPTNAME" />
+                <ScalarProperty Name="DEPTID" ColumnName="DEPTID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DeptUsedSchs">
             <EntityTypeMapping TypeName="bioModel.DeptUsedSchs">
               <MappingFragment StoreEntitySet="DeptUsedSchs">
-                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
                 <ScalarProperty Name="SchId" ColumnName="SchId" />
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FaceTemp">
             <EntityTypeMapping TypeName="bioModel.FaceTemp">
               <MappingFragment StoreEntitySet="FaceTemp">
-                <ScalarProperty Name="TEMPLATEID" ColumnName="TEMPLATEID" />
-                <ScalarProperty Name="USERNO" ColumnName="USERNO" />
-                <ScalarProperty Name="SIZE" ColumnName="SIZE" />
-                <ScalarProperty Name="pin" ColumnName="pin" />
-                <ScalarProperty Name="FACEID" ColumnName="FACEID" />
-                <ScalarProperty Name="VALID" ColumnName="VALID" />
-                <ScalarProperty Name="RESERVE" ColumnName="RESERVE" />
-                <ScalarProperty Name="ACTIVETIME" ColumnName="ACTIVETIME" />
-                <ScalarProperty Name="VFCOUNT" ColumnName="VFCOUNT" />
-                <ScalarProperty Name="TEMPLATE" ColumnName="TEMPLATE" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="TEMPLATE" ColumnName="TEMPLATE" />
+                <ScalarProperty Name="VFCOUNT" ColumnName="VFCOUNT" />
+                <ScalarProperty Name="ACTIVETIME" ColumnName="ACTIVETIME" />
+                <ScalarProperty Name="RESERVE" ColumnName="RESERVE" />
+                <ScalarProperty Name="VALID" ColumnName="VALID" />
+                <ScalarProperty Name="FACEID" ColumnName="FACEID" />
+                <ScalarProperty Name="pin" ColumnName="pin" />
+                <ScalarProperty Name="SIZE" ColumnName="SIZE" />
+                <ScalarProperty Name="USERNO" ColumnName="USERNO" />
+                <ScalarProperty Name="TEMPLATEID" ColumnName="TEMPLATEID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HOLIDAYS">
             <EntityTypeMapping TypeName="bioModel.HOLIDAYS">
               <MappingFragment StoreEntitySet="HOLIDAYS">
-                <ScalarProperty Name="HOLIDAYID" ColumnName="HOLIDAYID" />
-                <ScalarProperty Name="HOLIDAYNAME" ColumnName="HOLIDAYNAME" />
-                <ScalarProperty Name="HOLIDAYYEAR" ColumnName="HOLIDAYYEAR" />
-                <ScalarProperty Name="HOLIDAYMONTH" ColumnName="HOLIDAYMONTH" />
-                <ScalarProperty Name="HOLIDAYDAY" ColumnName="HOLIDAYDAY" />
-                <ScalarProperty Name="STARTTIME" ColumnName="STARTTIME" />
-                <ScalarProperty Name="DURATION" ColumnName="DURATION" />
-                <ScalarProperty Name="HOLIDAYTYPE" ColumnName="HOLIDAYTYPE" />
-                <ScalarProperty Name="XINBIE" ColumnName="XINBIE" />
-                <ScalarProperty Name="MINZU" ColumnName="MINZU" />
-                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
                 <ScalarProperty Name="timezone" ColumnName="timezone" />
+                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
+                <ScalarProperty Name="MINZU" ColumnName="MINZU" />
+                <ScalarProperty Name="XINBIE" ColumnName="XINBIE" />
+                <ScalarProperty Name="HOLIDAYTYPE" ColumnName="HOLIDAYTYPE" />
+                <ScalarProperty Name="DURATION" ColumnName="DURATION" />
+                <ScalarProperty Name="STARTTIME" ColumnName="STARTTIME" />
+                <ScalarProperty Name="HOLIDAYDAY" ColumnName="HOLIDAYDAY" />
+                <ScalarProperty Name="HOLIDAYMONTH" ColumnName="HOLIDAYMONTH" />
+                <ScalarProperty Name="HOLIDAYYEAR" ColumnName="HOLIDAYYEAR" />
+                <ScalarProperty Name="HOLIDAYNAME" ColumnName="HOLIDAYNAME" />
+                <ScalarProperty Name="HOLIDAYID" ColumnName="HOLIDAYID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Incidencia">
+            <EntityTypeMapping TypeName="bioModel.Incidencia">
+              <MappingFragment StoreEntitySet="Incidencia">
+                <ScalarProperty Name="justificado" ColumnName="justificado" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="tipoJustificacion" ColumnName="tipoJustificacion" />
+                <ScalarProperty Name="tipoIncidencia" ColumnName="tipoIncidencia" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="horaS" ColumnName="horaS" />
+                <ScalarProperty Name="horaE" ColumnName="horaE" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LeaveClass">
             <EntityTypeMapping TypeName="bioModel.LeaveClass">
               <MappingFragment StoreEntitySet="LeaveClass">
-                <ScalarProperty Name="LeaveId" ColumnName="LeaveId" />
-                <ScalarProperty Name="LeaveName" ColumnName="LeaveName" />
-                <ScalarProperty Name="MinUnit" ColumnName="MinUnit" />
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="RemaindProc" ColumnName="RemaindProc" />
-                <ScalarProperty Name="RemaindCount" ColumnName="RemaindCount" />
-                <ScalarProperty Name="ReportSymbol" ColumnName="ReportSymbol" />
-                <ScalarProperty Name="Deduct" ColumnName="Deduct" />
-                <ScalarProperty Name="Color" ColumnName="Color" />
                 <ScalarProperty Name="Classify" ColumnName="Classify" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Deduct" ColumnName="Deduct" />
+                <ScalarProperty Name="ReportSymbol" ColumnName="ReportSymbol" />
+                <ScalarProperty Name="RemaindCount" ColumnName="RemaindCount" />
+                <ScalarProperty Name="RemaindProc" ColumnName="RemaindProc" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="MinUnit" ColumnName="MinUnit" />
+                <ScalarProperty Name="LeaveName" ColumnName="LeaveName" />
+                <ScalarProperty Name="LeaveId" ColumnName="LeaveId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LeaveClass1">
             <EntityTypeMapping TypeName="bioModel.LeaveClass1">
               <MappingFragment StoreEntitySet="LeaveClass1">
-                <ScalarProperty Name="LeaveId" ColumnName="LeaveId" />
-                <ScalarProperty Name="LeaveName" ColumnName="LeaveName" />
-                <ScalarProperty Name="MinUnit" ColumnName="MinUnit" />
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="RemaindProc" ColumnName="RemaindProc" />
-                <ScalarProperty Name="RemaindCount" ColumnName="RemaindCount" />
-                <ScalarProperty Name="ReportSymbol" ColumnName="ReportSymbol" />
-                <ScalarProperty Name="Deduct" ColumnName="Deduct" />
-                <ScalarProperty Name="LeaveType" ColumnName="LeaveType" />
-                <ScalarProperty Name="Color" ColumnName="Color" />
-                <ScalarProperty Name="Classify" ColumnName="Classify" />
                 <ScalarProperty Name="Calc" ColumnName="Calc" />
+                <ScalarProperty Name="Classify" ColumnName="Classify" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="LeaveType" ColumnName="LeaveType" />
+                <ScalarProperty Name="Deduct" ColumnName="Deduct" />
+                <ScalarProperty Name="ReportSymbol" ColumnName="ReportSymbol" />
+                <ScalarProperty Name="RemaindCount" ColumnName="RemaindCount" />
+                <ScalarProperty Name="RemaindProc" ColumnName="RemaindProc" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="MinUnit" ColumnName="MinUnit" />
+                <ScalarProperty Name="LeaveName" ColumnName="LeaveName" />
+                <ScalarProperty Name="LeaveId" ColumnName="LeaveId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Machines">
             <EntityTypeMapping TypeName="bioModel.Machines">
               <MappingFragment StoreEntitySet="Machines">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="MachineAlias" ColumnName="MachineAlias" />
-                <ScalarProperty Name="ConnectType" ColumnName="ConnectType" />
-                <ScalarProperty Name="IP" ColumnName="IP" />
-                <ScalarProperty Name="SerialPort" ColumnName="SerialPort" />
-                <ScalarProperty Name="Port" ColumnName="Port" />
-                <ScalarProperty Name="Baudrate" ColumnName="Baudrate" />
-                <ScalarProperty Name="MachineNumber" ColumnName="MachineNumber" />
-                <ScalarProperty Name="IsHost" ColumnName="IsHost" />
-                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
-                <ScalarProperty Name="CommPassword" ColumnName="CommPassword" />
-                <ScalarProperty Name="UILanguage" ColumnName="UILanguage" />
-                <ScalarProperty Name="DateFormat" ColumnName="DateFormat" />
-                <ScalarProperty Name="InOutRecordWarn" ColumnName="InOutRecordWarn" />
-                <ScalarProperty Name="Idle" ColumnName="Idle" />
-                <ScalarProperty Name="Voice" ColumnName="Voice" />
-                <ScalarProperty Name="managercount" ColumnName="managercount" />
-                <ScalarProperty Name="usercount" ColumnName="usercount" />
-                <ScalarProperty Name="fingercount" ColumnName="fingercount" />
-                <ScalarProperty Name="SecretCount" ColumnName="SecretCount" />
-                <ScalarProperty Name="FirmwareVersion" ColumnName="FirmwareVersion" />
-                <ScalarProperty Name="ProductType" ColumnName="ProductType" />
-                <ScalarProperty Name="LockControl" ColumnName="LockControl" />
-                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
-                <ScalarProperty Name="ProduceKind" ColumnName="ProduceKind" />
-                <ScalarProperty Name="sn" ColumnName="sn" />
-                <ScalarProperty Name="PhotoStamp" ColumnName="PhotoStamp" />
-                <ScalarProperty Name="IsIfChangeConfigServer2" ColumnName="IsIfChangeConfigServer2" />
                 <ScalarProperty Name="IsAndroid" ColumnName="IsAndroid" />
+                <ScalarProperty Name="IsIfChangeConfigServer2" ColumnName="IsIfChangeConfigServer2" />
+                <ScalarProperty Name="PhotoStamp" ColumnName="PhotoStamp" />
+                <ScalarProperty Name="sn" ColumnName="sn" />
+                <ScalarProperty Name="ProduceKind" ColumnName="ProduceKind" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="LockControl" ColumnName="LockControl" />
+                <ScalarProperty Name="ProductType" ColumnName="ProductType" />
+                <ScalarProperty Name="FirmwareVersion" ColumnName="FirmwareVersion" />
+                <ScalarProperty Name="SecretCount" ColumnName="SecretCount" />
+                <ScalarProperty Name="fingercount" ColumnName="fingercount" />
+                <ScalarProperty Name="usercount" ColumnName="usercount" />
+                <ScalarProperty Name="managercount" ColumnName="managercount" />
+                <ScalarProperty Name="Voice" ColumnName="Voice" />
+                <ScalarProperty Name="Idle" ColumnName="Idle" />
+                <ScalarProperty Name="InOutRecordWarn" ColumnName="InOutRecordWarn" />
+                <ScalarProperty Name="DateFormat" ColumnName="DateFormat" />
+                <ScalarProperty Name="UILanguage" ColumnName="UILanguage" />
+                <ScalarProperty Name="CommPassword" ColumnName="CommPassword" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="IsHost" ColumnName="IsHost" />
+                <ScalarProperty Name="MachineNumber" ColumnName="MachineNumber" />
+                <ScalarProperty Name="Baudrate" ColumnName="Baudrate" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+                <ScalarProperty Name="SerialPort" ColumnName="SerialPort" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="ConnectType" ColumnName="ConnectType" />
+                <ScalarProperty Name="MachineAlias" ColumnName="MachineAlias" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NUM_RUN">
             <EntityTypeMapping TypeName="bioModel.NUM_RUN">
               <MappingFragment StoreEntitySet="NUM_RUN">
-                <ScalarProperty Name="NUM_RUNID" ColumnName="NUM_RUNID" />
-                <ScalarProperty Name="OLDID" ColumnName="OLDID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="STARTDATE" ColumnName="STARTDATE" />
-                <ScalarProperty Name="ENDDATE" ColumnName="ENDDATE" />
-                <ScalarProperty Name="CYLE" ColumnName="CYLE" />
                 <ScalarProperty Name="UNITS" ColumnName="UNITS" />
+                <ScalarProperty Name="CYLE" ColumnName="CYLE" />
+                <ScalarProperty Name="ENDDATE" ColumnName="ENDDATE" />
+                <ScalarProperty Name="STARTDATE" ColumnName="STARTDATE" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="OLDID" ColumnName="OLDID" />
+                <ScalarProperty Name="NUM_RUNID" ColumnName="NUM_RUNID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NUM_RUN_DEIL">
             <EntityTypeMapping TypeName="bioModel.NUM_RUN_DEIL">
               <MappingFragment StoreEntitySet="NUM_RUN_DEIL">
-                <ScalarProperty Name="NUM_RUNID" ColumnName="NUM_RUNID" />
-                <ScalarProperty Name="STARTTIME" ColumnName="STARTTIME" />
-                <ScalarProperty Name="ENDTIME" ColumnName="ENDTIME" />
-                <ScalarProperty Name="SDAYS" ColumnName="SDAYS" />
-                <ScalarProperty Name="EDAYS" ColumnName="EDAYS" />
-                <ScalarProperty Name="SCHCLASSID" ColumnName="SCHCLASSID" />
                 <ScalarProperty Name="OverTime" ColumnName="OverTime" />
+                <ScalarProperty Name="SCHCLASSID" ColumnName="SCHCLASSID" />
+                <ScalarProperty Name="EDAYS" ColumnName="EDAYS" />
+                <ScalarProperty Name="SDAYS" ColumnName="SDAYS" />
+                <ScalarProperty Name="ENDTIME" ColumnName="ENDTIME" />
+                <ScalarProperty Name="STARTTIME" ColumnName="STARTTIME" />
+                <ScalarProperty Name="NUM_RUNID" ColumnName="NUM_RUNID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ReportItem">
             <EntityTypeMapping TypeName="bioModel.ReportItem">
               <MappingFragment StoreEntitySet="ReportItem">
-                <ScalarProperty Name="RIID" ColumnName="RIID" />
-                <ScalarProperty Name="RIIndex" ColumnName="RIIndex" />
-                <ScalarProperty Name="ShowIt" ColumnName="ShowIt" />
-                <ScalarProperty Name="RIName" ColumnName="RIName" />
-                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
-                <ScalarProperty Name="Formula" ColumnName="Formula" />
-                <ScalarProperty Name="CalcBySchClass" ColumnName="CalcBySchClass" />
-                <ScalarProperty Name="StatisticMethod" ColumnName="StatisticMethod" />
-                <ScalarProperty Name="CalcLast" ColumnName="CalcLast" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="CalcLast" ColumnName="CalcLast" />
+                <ScalarProperty Name="StatisticMethod" ColumnName="StatisticMethod" />
+                <ScalarProperty Name="CalcBySchClass" ColumnName="CalcBySchClass" />
+                <ScalarProperty Name="Formula" ColumnName="Formula" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="RIName" ColumnName="RIName" />
+                <ScalarProperty Name="ShowIt" ColumnName="ShowIt" />
+                <ScalarProperty Name="RIIndex" ColumnName="RIIndex" />
+                <ScalarProperty Name="RIID" ColumnName="RIID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SchClass">
             <EntityTypeMapping TypeName="bioModel.SchClass">
               <MappingFragment StoreEntitySet="SchClass">
-                <ScalarProperty Name="schClassid" ColumnName="schClassid" />
-                <ScalarProperty Name="schName" ColumnName="schName" />
-                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
-                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
-                <ScalarProperty Name="LateMinutes" ColumnName="LateMinutes" />
-                <ScalarProperty Name="EarlyMinutes" ColumnName="EarlyMinutes" />
-                <ScalarProperty Name="CheckIn" ColumnName="CheckIn" />
-                <ScalarProperty Name="CheckOut" ColumnName="CheckOut" />
-                <ScalarProperty Name="CheckInTime1" ColumnName="CheckInTime1" />
-                <ScalarProperty Name="CheckInTime2" ColumnName="CheckInTime2" />
-                <ScalarProperty Name="CheckOutTime1" ColumnName="CheckOutTime1" />
-                <ScalarProperty Name="CheckOutTime2" ColumnName="CheckOutTime2" />
-                <ScalarProperty Name="Color" ColumnName="Color" />
-                <ScalarProperty Name="AutoBind" ColumnName="AutoBind" />
-                <ScalarProperty Name="WorkDay" ColumnName="WorkDay" />
-                <ScalarProperty Name="SensorID" ColumnName="SensorID" />
                 <ScalarProperty Name="WorkMins" ColumnName="WorkMins" />
+                <ScalarProperty Name="SensorID" ColumnName="SensorID" />
+                <ScalarProperty Name="WorkDay" ColumnName="WorkDay" />
+                <ScalarProperty Name="AutoBind" ColumnName="AutoBind" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="CheckOutTime2" ColumnName="CheckOutTime2" />
+                <ScalarProperty Name="CheckOutTime1" ColumnName="CheckOutTime1" />
+                <ScalarProperty Name="CheckInTime2" ColumnName="CheckInTime2" />
+                <ScalarProperty Name="CheckInTime1" ColumnName="CheckInTime1" />
+                <ScalarProperty Name="CheckOut" ColumnName="CheckOut" />
+                <ScalarProperty Name="CheckIn" ColumnName="CheckIn" />
+                <ScalarProperty Name="EarlyMinutes" ColumnName="EarlyMinutes" />
+                <ScalarProperty Name="LateMinutes" ColumnName="LateMinutes" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="schName" ColumnName="schName" />
+                <ScalarProperty Name="schClassid" ColumnName="schClassid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SECURITYDETAILS">
             <EntityTypeMapping TypeName="bioModel.SECURITYDETAILS">
               <MappingFragment StoreEntitySet="SECURITYDETAILS">
-                <ScalarProperty Name="SECURITYDETAILID" ColumnName="SECURITYDETAILID" />
-                <ScalarProperty Name="USERID" ColumnName="USERID" />
-                <ScalarProperty Name="DEPTID" ColumnName="DEPTID" />
-                <ScalarProperty Name="SCHEDULE" ColumnName="SCHEDULE" />
-                <ScalarProperty Name="USERINFO" ColumnName="USERINFO" />
-                <ScalarProperty Name="ENROLLFINGERS" ColumnName="ENROLLFINGERS" />
-                <ScalarProperty Name="REPORTVIEW" ColumnName="REPORTVIEW" />
-                <ScalarProperty Name="REPORT" ColumnName="REPORT" />
-                <ScalarProperty Name="ReadOnly" ColumnName="ReadOnly" />
                 <ScalarProperty Name="FullControl" ColumnName="FullControl" />
+                <ScalarProperty Name="ReadOnly" ColumnName="ReadOnly" />
+                <ScalarProperty Name="REPORT" ColumnName="REPORT" />
+                <ScalarProperty Name="REPORTVIEW" ColumnName="REPORTVIEW" />
+                <ScalarProperty Name="ENROLLFINGERS" ColumnName="ENROLLFINGERS" />
+                <ScalarProperty Name="USERINFO" ColumnName="USERINFO" />
+                <ScalarProperty Name="SCHEDULE" ColumnName="SCHEDULE" />
+                <ScalarProperty Name="DEPTID" ColumnName="DEPTID" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="SECURITYDETAILID" ColumnName="SECURITYDETAILID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SHIFT">
             <EntityTypeMapping TypeName="bioModel.SHIFT">
               <MappingFragment StoreEntitySet="SHIFT">
-                <ScalarProperty Name="SHIFTID" ColumnName="SHIFTID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="USHIFTID" ColumnName="USHIFTID" />
-                <ScalarProperty Name="STARTDATE" ColumnName="STARTDATE" />
-                <ScalarProperty Name="ENDDATE" ColumnName="ENDDATE" />
-                <ScalarProperty Name="RUNNUM" ColumnName="RUNNUM" />
-                <ScalarProperty Name="SCH1" ColumnName="SCH1" />
-                <ScalarProperty Name="SCH2" ColumnName="SCH2" />
-                <ScalarProperty Name="SCH3" ColumnName="SCH3" />
-                <ScalarProperty Name="SCH4" ColumnName="SCH4" />
-                <ScalarProperty Name="SCH5" ColumnName="SCH5" />
-                <ScalarProperty Name="SCH6" ColumnName="SCH6" />
-                <ScalarProperty Name="SCH7" ColumnName="SCH7" />
-                <ScalarProperty Name="SCH8" ColumnName="SCH8" />
-                <ScalarProperty Name="SCH9" ColumnName="SCH9" />
-                <ScalarProperty Name="SCH10" ColumnName="SCH10" />
-                <ScalarProperty Name="SCH11" ColumnName="SCH11" />
-                <ScalarProperty Name="SCH12" ColumnName="SCH12" />
-                <ScalarProperty Name="CYCLE" ColumnName="CYCLE" />
                 <ScalarProperty Name="UNITS" ColumnName="UNITS" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SystemLog">
-            <EntityTypeMapping TypeName="bioModel.SystemLog">
-              <MappingFragment StoreEntitySet="SystemLog">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Operator" ColumnName="Operator" />
-                <ScalarProperty Name="LogTime" ColumnName="LogTime" />
-                <ScalarProperty Name="MachineAlias" ColumnName="MachineAlias" />
-                <ScalarProperty Name="LogTag" ColumnName="LogTag" />
-                <ScalarProperty Name="LogDescr" ColumnName="LogDescr" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TBSMSALLOT">
-            <EntityTypeMapping TypeName="bioModel.TBSMSALLOT">
-              <MappingFragment StoreEntitySet="TBSMSALLOT">
-                <ScalarProperty Name="REFERENCE" ColumnName="REFERENCE" />
-                <ScalarProperty Name="SMSREF" ColumnName="SMSREF" />
-                <ScalarProperty Name="USERREF" ColumnName="USERREF" />
-                <ScalarProperty Name="GENTM" ColumnName="GENTM" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TBSMSINFO">
-            <EntityTypeMapping TypeName="bioModel.TBSMSINFO">
-              <MappingFragment StoreEntitySet="TBSMSINFO">
-                <ScalarProperty Name="REFERENCE" ColumnName="REFERENCE" />
-                <ScalarProperty Name="SMSID" ColumnName="SMSID" />
-                <ScalarProperty Name="SMSINDEX" ColumnName="SMSINDEX" />
-                <ScalarProperty Name="SMSTYPE" ColumnName="SMSTYPE" />
-                <ScalarProperty Name="SMSCONTENT" ColumnName="SMSCONTENT" />
-                <ScalarProperty Name="SMSSTARTTM" ColumnName="SMSSTARTTM" />
-                <ScalarProperty Name="SMSTMLENG" ColumnName="SMSTMLENG" />
-                <ScalarProperty Name="GENTM" ColumnName="GENTM" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TEMPLATE">
-            <EntityTypeMapping TypeName="bioModel.TEMPLATE">
-              <MappingFragment StoreEntitySet="TEMPLATE">
-                <ScalarProperty Name="TEMPLATEID" ColumnName="TEMPLATEID" />
-                <ScalarProperty Name="USERID" ColumnName="USERID" />
-                <ScalarProperty Name="FINGERID" ColumnName="FINGERID" />
-                <ScalarProperty Name="TEMPLATE1" ColumnName="TEMPLATE" />
-                <ScalarProperty Name="TEMPLATE2" ColumnName="TEMPLATE2" />
-                <ScalarProperty Name="TEMPLATE3" ColumnName="TEMPLATE3" />
-                <ScalarProperty Name="BITMAPPICTURE" ColumnName="BITMAPPICTURE" />
-                <ScalarProperty Name="BITMAPPICTURE2" ColumnName="BITMAPPICTURE2" />
-                <ScalarProperty Name="BITMAPPICTURE3" ColumnName="BITMAPPICTURE3" />
-                <ScalarProperty Name="BITMAPPICTURE4" ColumnName="BITMAPPICTURE4" />
-                <ScalarProperty Name="USETYPE" ColumnName="USETYPE" />
-                <ScalarProperty Name="EMACHINENUM" ColumnName="EMACHINENUM" />
-                <ScalarProperty Name="TEMPLATE11" ColumnName="TEMPLATE1" />
-                <ScalarProperty Name="Flag" ColumnName="Flag" />
-                <ScalarProperty Name="DivisionFP" ColumnName="DivisionFP" />
-                <ScalarProperty Name="TEMPLATE4" ColumnName="TEMPLATE4" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TipoIncidencia">
-            <EntityTypeMapping TypeName="bioModel.TipoIncidencia">
-              <MappingFragment StoreEntitySet="TipoIncidencia">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TipoJustificacion">
-            <EntityTypeMapping TypeName="bioModel.TipoJustificacion">
-              <MappingFragment StoreEntitySet="TipoJustificacion">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="USER_OF_RUN">
-            <EntityTypeMapping TypeName="bioModel.USER_OF_RUN">
-              <MappingFragment StoreEntitySet="USER_OF_RUN">
-                <ScalarProperty Name="USERID" ColumnName="USERID" />
-                <ScalarProperty Name="NUM_OF_RUN_ID" ColumnName="NUM_OF_RUN_ID" />
-                <ScalarProperty Name="STARTDATE" ColumnName="STARTDATE" />
+                <ScalarProperty Name="CYCLE" ColumnName="CYCLE" />
+                <ScalarProperty Name="SCH12" ColumnName="SCH12" />
+                <ScalarProperty Name="SCH11" ColumnName="SCH11" />
+                <ScalarProperty Name="SCH10" ColumnName="SCH10" />
+                <ScalarProperty Name="SCH9" ColumnName="SCH9" />
+                <ScalarProperty Name="SCH8" ColumnName="SCH8" />
+                <ScalarProperty Name="SCH7" ColumnName="SCH7" />
+                <ScalarProperty Name="SCH6" ColumnName="SCH6" />
+                <ScalarProperty Name="SCH5" ColumnName="SCH5" />
+                <ScalarProperty Name="SCH4" ColumnName="SCH4" />
+                <ScalarProperty Name="SCH3" ColumnName="SCH3" />
+                <ScalarProperty Name="SCH2" ColumnName="SCH2" />
+                <ScalarProperty Name="SCH1" ColumnName="SCH1" />
+                <ScalarProperty Name="RUNNUM" ColumnName="RUNNUM" />
                 <ScalarProperty Name="ENDDATE" ColumnName="ENDDATE" />
-                <ScalarProperty Name="ISNOTOF_RUN" ColumnName="ISNOTOF_RUN" />
-                <ScalarProperty Name="ORDER_RUN" ColumnName="ORDER_RUN" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="USER_SPEDAY">
-            <EntityTypeMapping TypeName="bioModel.USER_SPEDAY">
-              <MappingFragment StoreEntitySet="USER_SPEDAY">
-                <ScalarProperty Name="USERID" ColumnName="USERID" />
-                <ScalarProperty Name="STARTSPECDAY" ColumnName="STARTSPECDAY" />
-                <ScalarProperty Name="ENDSPECDAY" ColumnName="ENDSPECDAY" />
-                <ScalarProperty Name="DATEID" ColumnName="DATEID" />
-                <ScalarProperty Name="YUANYING" ColumnName="YUANYING" />
-                <ScalarProperty Name="DATE" ColumnName="DATE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="USER_TEMP_SCH">
-            <EntityTypeMapping TypeName="bioModel.USER_TEMP_SCH">
-              <MappingFragment StoreEntitySet="USER_TEMP_SCH">
-                <ScalarProperty Name="USERID" ColumnName="USERID" />
-                <ScalarProperty Name="COMETIME" ColumnName="COMETIME" />
-                <ScalarProperty Name="LEAVETIME" ColumnName="LEAVETIME" />
-                <ScalarProperty Name="OVERTIME" ColumnName="OVERTIME" />
-                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
-                <ScalarProperty Name="FLAG" ColumnName="FLAG" />
-                <ScalarProperty Name="SCHCLASSID" ColumnName="SCHCLASSID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserACMachines">
-            <EntityTypeMapping TypeName="bioModel.UserACMachines">
-              <MappingFragment StoreEntitySet="UserACMachines">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="Deviceid" ColumnName="Deviceid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserACPrivilege">
-            <EntityTypeMapping TypeName="bioModel.UserACPrivilege">
-              <MappingFragment StoreEntitySet="UserACPrivilege">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
-                <ScalarProperty Name="ACGroupID" ColumnName="ACGroupID" />
-                <ScalarProperty Name="IsUseGroup" ColumnName="IsUseGroup" />
-                <ScalarProperty Name="TimeZone1" ColumnName="TimeZone1" />
-                <ScalarProperty Name="TimeZone2" ColumnName="TimeZone2" />
-                <ScalarProperty Name="TimeZone3" ColumnName="TimeZone3" />
-                <ScalarProperty Name="verifystyle" ColumnName="verifystyle" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="USERINFO">
-            <EntityTypeMapping TypeName="bioModel.USERINFO">
-              <MappingFragment StoreEntitySet="USERINFO">
-                <ScalarProperty Name="USERID" ColumnName="USERID" />
-                <ScalarProperty Name="BADGENUMBER" ColumnName="BADGENUMBER" />
-                <ScalarProperty Name="SSN" ColumnName="SSN" />
+                <ScalarProperty Name="STARTDATE" ColumnName="STARTDATE" />
+                <ScalarProperty Name="USHIFTID" ColumnName="USHIFTID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
-                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
-                <ScalarProperty Name="PAGER" ColumnName="PAGER" />
-                <ScalarProperty Name="BIRTHDAY" ColumnName="BIRTHDAY" />
-                <ScalarProperty Name="HIREDDAY" ColumnName="HIREDDAY" />
-                <ScalarProperty Name="STREET" ColumnName="STREET" />
-                <ScalarProperty Name="CITY" ColumnName="CITY" />
-                <ScalarProperty Name="STATE" ColumnName="STATE" />
-                <ScalarProperty Name="ZIP" ColumnName="ZIP" />
-                <ScalarProperty Name="OPHONE" ColumnName="OPHONE" />
-                <ScalarProperty Name="FPHONE" ColumnName="FPHONE" />
-                <ScalarProperty Name="VERIFICATIONMETHOD" ColumnName="VERIFICATIONMETHOD" />
-                <ScalarProperty Name="DEFAULTDEPTID" ColumnName="DEFAULTDEPTID" />
-                <ScalarProperty Name="SECURITYFLAGS" ColumnName="SECURITYFLAGS" />
-                <ScalarProperty Name="ATT" ColumnName="ATT" />
-                <ScalarProperty Name="INLATE" ColumnName="INLATE" />
-                <ScalarProperty Name="OUTEARLY" ColumnName="OUTEARLY" />
-                <ScalarProperty Name="OVERTIME" ColumnName="OVERTIME" />
-                <ScalarProperty Name="SEP" ColumnName="SEP" />
-                <ScalarProperty Name="HOLIDAY" ColumnName="HOLIDAY" />
-                <ScalarProperty Name="MINZU" ColumnName="MINZU" />
-                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
-                <ScalarProperty Name="LUNCHDURATION" ColumnName="LUNCHDURATION" />
-                <ScalarProperty Name="MVerifyPass" ColumnName="MVerifyPass" />
-                <ScalarProperty Name="PHOTO" ColumnName="PHOTO" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="privilege" ColumnName="privilege" />
-                <ScalarProperty Name="InheritDeptSch" ColumnName="InheritDeptSch" />
-                <ScalarProperty Name="InheritDeptSchClass" ColumnName="InheritDeptSchClass" />
-                <ScalarProperty Name="AutoSchPlan" ColumnName="AutoSchPlan" />
-                <ScalarProperty Name="MinAutoSchInterval" ColumnName="MinAutoSchInterval" />
-                <ScalarProperty Name="RegisterOT" ColumnName="RegisterOT" />
-                <ScalarProperty Name="InheritDeptRule" ColumnName="InheritDeptRule" />
-                <ScalarProperty Name="EMPRIVILEGE" ColumnName="EMPRIVILEGE" />
-                <ScalarProperty Name="CardNo" ColumnName="CardNo" />
-                <ScalarProperty Name="FaceGroup" ColumnName="FaceGroup" />
-                <ScalarProperty Name="AccGroup" ColumnName="AccGroup" />
-                <ScalarProperty Name="UseAccGroupTZ" ColumnName="UseAccGroupTZ" />
-                <ScalarProperty Name="VerifyCode" ColumnName="VerifyCode" />
-                <ScalarProperty Name="Expires" ColumnName="Expires" />
-                <ScalarProperty Name="ValidCount" ColumnName="ValidCount" />
-                <ScalarProperty Name="ValidTimeBegin" ColumnName="ValidTimeBegin" />
-                <ScalarProperty Name="ValidTimeEnd" ColumnName="ValidTimeEnd" />
-                <ScalarProperty Name="TimeZone1" ColumnName="TimeZone1" />
-                <ScalarProperty Name="TimeZone2" ColumnName="TimeZone2" />
-                <ScalarProperty Name="TimeZone3" ColumnName="TimeZone3" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserUpdates">
-            <EntityTypeMapping TypeName="bioModel.UserUpdates">
-              <MappingFragment StoreEntitySet="UserUpdates">
-                <ScalarProperty Name="UpdateId" ColumnName="UpdateId" />
-                <ScalarProperty Name="BadgeNumber" ColumnName="BadgeNumber" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserUsedSClasses">
-            <EntityTypeMapping TypeName="bioModel.UserUsedSClasses">
-              <MappingFragment StoreEntitySet="UserUsedSClasses">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="SchId" ColumnName="SchId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EmOpLog">
-            <EntityTypeMapping TypeName="bioModel.EmOpLog">
-              <MappingFragment StoreEntitySet="EmOpLog">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="USERID" ColumnName="USERID" />
-                <ScalarProperty Name="OperateTime" ColumnName="OperateTime" />
-                <ScalarProperty Name="manipulationID" ColumnName="manipulationID" />
-                <ScalarProperty Name="Params1" ColumnName="Params1" />
-                <ScalarProperty Name="Params2" ColumnName="Params2" />
-                <ScalarProperty Name="Params3" ColumnName="Params3" />
-                <ScalarProperty Name="Params4" ColumnName="Params4" />
-                <ScalarProperty Name="SensorId" ColumnName="SensorId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ServerLog">
-            <EntityTypeMapping TypeName="bioModel.ServerLog">
-              <MappingFragment StoreEntitySet="ServerLog">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="EVENT" ColumnName="EVENT" />
-                <ScalarProperty Name="USERID" ColumnName="USERID" />
-                <ScalarProperty Name="EnrollNumber" ColumnName="EnrollNumber" />
-                <ScalarProperty Name="parameter" ColumnName="parameter" />
-                <ScalarProperty Name="EVENTTIME" ColumnName="EVENTTIME" />
-                <ScalarProperty Name="SENSORID" ColumnName="SENSORID" />
-                <ScalarProperty Name="OPERATOR" ColumnName="OPERATOR" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UsersMachines">
-            <EntityTypeMapping TypeName="bioModel.UsersMachines">
-              <MappingFragment StoreEntitySet="UsersMachines">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="USERID" ColumnName="USERID" />
-                <ScalarProperty Name="DEVICEID" ColumnName="DEVICEID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="spGetUserMarks" FunctionName="bioModel.Store.spGetUserMarks">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="bioModel.spGetUserMarks_Result">
-                <ScalarProperty Name="dia" ColumnName="dia" />
-                <ScalarProperty Name="fullfecha" ColumnName="fullfecha" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="usuario" ColumnName="usuario" />
-                <ScalarProperty Name="entrada" ColumnName="entrada" />
-                <ScalarProperty Name="salida" ColumnName="salida" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetUserInc" FunctionName="bioModel.Store.spGetUserInc">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="bioModel.spGetUserInc_Result">
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="fecha" ColumnName="fecha" />
-                <ScalarProperty Name="horaE" ColumnName="horaE" />
-                <ScalarProperty Name="horaS" ColumnName="horaS" />
-                <ScalarProperty Name="tipoIncidencia" ColumnName="tipoIncidencia" />
-                <ScalarProperty Name="tipoJustificacion" ColumnName="tipoJustificacion" />
-                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
-                <ScalarProperty Name="justificado" ColumnName="justificado" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <EntitySetMapping Name="Configuracion_Horario">
-            <EntityTypeMapping TypeName="bioModel.Configuracion_Horario">
-              <MappingFragment StoreEntitySet="Configuracion_Horario">
-                <ScalarProperty Name="activo" ColumnName="activo" />
-                <ScalarProperty Name="horaSalida" ColumnName="horaSalida" />
-                <ScalarProperty Name="horaEntrada" ColumnName="horaEntrada" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="SHIFTID" ColumnName="SHIFTID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2238,6 +1985,249 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemLog">
+            <EntityTypeMapping TypeName="bioModel.SystemLog">
+              <MappingFragment StoreEntitySet="SystemLog">
+                <ScalarProperty Name="LogDescr" ColumnName="LogDescr" />
+                <ScalarProperty Name="LogTag" ColumnName="LogTag" />
+                <ScalarProperty Name="MachineAlias" ColumnName="MachineAlias" />
+                <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+                <ScalarProperty Name="Operator" ColumnName="Operator" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBSMSALLOT">
+            <EntityTypeMapping TypeName="bioModel.TBSMSALLOT">
+              <MappingFragment StoreEntitySet="TBSMSALLOT">
+                <ScalarProperty Name="GENTM" ColumnName="GENTM" />
+                <ScalarProperty Name="USERREF" ColumnName="USERREF" />
+                <ScalarProperty Name="SMSREF" ColumnName="SMSREF" />
+                <ScalarProperty Name="REFERENCE" ColumnName="REFERENCE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBSMSINFO">
+            <EntityTypeMapping TypeName="bioModel.TBSMSINFO">
+              <MappingFragment StoreEntitySet="TBSMSINFO">
+                <ScalarProperty Name="GENTM" ColumnName="GENTM" />
+                <ScalarProperty Name="SMSTMLENG" ColumnName="SMSTMLENG" />
+                <ScalarProperty Name="SMSSTARTTM" ColumnName="SMSSTARTTM" />
+                <ScalarProperty Name="SMSCONTENT" ColumnName="SMSCONTENT" />
+                <ScalarProperty Name="SMSTYPE" ColumnName="SMSTYPE" />
+                <ScalarProperty Name="SMSINDEX" ColumnName="SMSINDEX" />
+                <ScalarProperty Name="SMSID" ColumnName="SMSID" />
+                <ScalarProperty Name="REFERENCE" ColumnName="REFERENCE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TEMPLATE">
+            <EntityTypeMapping TypeName="bioModel.TEMPLATE">
+              <MappingFragment StoreEntitySet="TEMPLATE">
+                <ScalarProperty Name="TEMPLATE4" ColumnName="TEMPLATE4" />
+                <ScalarProperty Name="DivisionFP" ColumnName="DivisionFP" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="TEMPLATE11" ColumnName="TEMPLATE1" />
+                <ScalarProperty Name="EMACHINENUM" ColumnName="EMACHINENUM" />
+                <ScalarProperty Name="USETYPE" ColumnName="USETYPE" />
+                <ScalarProperty Name="BITMAPPICTURE4" ColumnName="BITMAPPICTURE4" />
+                <ScalarProperty Name="BITMAPPICTURE3" ColumnName="BITMAPPICTURE3" />
+                <ScalarProperty Name="BITMAPPICTURE2" ColumnName="BITMAPPICTURE2" />
+                <ScalarProperty Name="BITMAPPICTURE" ColumnName="BITMAPPICTURE" />
+                <ScalarProperty Name="TEMPLATE3" ColumnName="TEMPLATE3" />
+                <ScalarProperty Name="TEMPLATE2" ColumnName="TEMPLATE2" />
+                <ScalarProperty Name="TEMPLATE1" ColumnName="TEMPLATE" />
+                <ScalarProperty Name="FINGERID" ColumnName="FINGERID" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="TEMPLATEID" ColumnName="TEMPLATEID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoIncidencia">
+            <EntityTypeMapping TypeName="bioModel.TipoIncidencia">
+              <MappingFragment StoreEntitySet="TipoIncidencia">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoJustificacion">
+            <EntityTypeMapping TypeName="bioModel.TipoJustificacion">
+              <MappingFragment StoreEntitySet="TipoJustificacion">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_OF_RUN">
+            <EntityTypeMapping TypeName="bioModel.USER_OF_RUN">
+              <MappingFragment StoreEntitySet="USER_OF_RUN">
+                <ScalarProperty Name="ORDER_RUN" ColumnName="ORDER_RUN" />
+                <ScalarProperty Name="ISNOTOF_RUN" ColumnName="ISNOTOF_RUN" />
+                <ScalarProperty Name="ENDDATE" ColumnName="ENDDATE" />
+                <ScalarProperty Name="STARTDATE" ColumnName="STARTDATE" />
+                <ScalarProperty Name="NUM_OF_RUN_ID" ColumnName="NUM_OF_RUN_ID" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_SPEDAY">
+            <EntityTypeMapping TypeName="bioModel.USER_SPEDAY">
+              <MappingFragment StoreEntitySet="USER_SPEDAY">
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="YUANYING" ColumnName="YUANYING" />
+                <ScalarProperty Name="DATEID" ColumnName="DATEID" />
+                <ScalarProperty Name="ENDSPECDAY" ColumnName="ENDSPECDAY" />
+                <ScalarProperty Name="STARTSPECDAY" ColumnName="STARTSPECDAY" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_TEMP_SCH">
+            <EntityTypeMapping TypeName="bioModel.USER_TEMP_SCH">
+              <MappingFragment StoreEntitySet="USER_TEMP_SCH">
+                <ScalarProperty Name="SCHCLASSID" ColumnName="SCHCLASSID" />
+                <ScalarProperty Name="FLAG" ColumnName="FLAG" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="OVERTIME" ColumnName="OVERTIME" />
+                <ScalarProperty Name="LEAVETIME" ColumnName="LEAVETIME" />
+                <ScalarProperty Name="COMETIME" ColumnName="COMETIME" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserACMachines">
+            <EntityTypeMapping TypeName="bioModel.UserACMachines">
+              <MappingFragment StoreEntitySet="UserACMachines">
+                <ScalarProperty Name="Deviceid" ColumnName="Deviceid" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserACPrivilege">
+            <EntityTypeMapping TypeName="bioModel.UserACPrivilege">
+              <MappingFragment StoreEntitySet="UserACPrivilege">
+                <ScalarProperty Name="verifystyle" ColumnName="verifystyle" />
+                <ScalarProperty Name="TimeZone3" ColumnName="TimeZone3" />
+                <ScalarProperty Name="TimeZone2" ColumnName="TimeZone2" />
+                <ScalarProperty Name="TimeZone1" ColumnName="TimeZone1" />
+                <ScalarProperty Name="IsUseGroup" ColumnName="IsUseGroup" />
+                <ScalarProperty Name="ACGroupID" ColumnName="ACGroupID" />
+                <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERINFO">
+            <EntityTypeMapping TypeName="bioModel.USERINFO">
+              <MappingFragment StoreEntitySet="USERINFO">
+                <ScalarProperty Name="TimeZone3" ColumnName="TimeZone3" />
+                <ScalarProperty Name="TimeZone2" ColumnName="TimeZone2" />
+                <ScalarProperty Name="TimeZone1" ColumnName="TimeZone1" />
+                <ScalarProperty Name="ValidTimeEnd" ColumnName="ValidTimeEnd" />
+                <ScalarProperty Name="ValidTimeBegin" ColumnName="ValidTimeBegin" />
+                <ScalarProperty Name="ValidCount" ColumnName="ValidCount" />
+                <ScalarProperty Name="Expires" ColumnName="Expires" />
+                <ScalarProperty Name="VerifyCode" ColumnName="VerifyCode" />
+                <ScalarProperty Name="UseAccGroupTZ" ColumnName="UseAccGroupTZ" />
+                <ScalarProperty Name="AccGroup" ColumnName="AccGroup" />
+                <ScalarProperty Name="FaceGroup" ColumnName="FaceGroup" />
+                <ScalarProperty Name="CardNo" ColumnName="CardNo" />
+                <ScalarProperty Name="EMPRIVILEGE" ColumnName="EMPRIVILEGE" />
+                <ScalarProperty Name="InheritDeptRule" ColumnName="InheritDeptRule" />
+                <ScalarProperty Name="RegisterOT" ColumnName="RegisterOT" />
+                <ScalarProperty Name="MinAutoSchInterval" ColumnName="MinAutoSchInterval" />
+                <ScalarProperty Name="AutoSchPlan" ColumnName="AutoSchPlan" />
+                <ScalarProperty Name="InheritDeptSchClass" ColumnName="InheritDeptSchClass" />
+                <ScalarProperty Name="InheritDeptSch" ColumnName="InheritDeptSch" />
+                <ScalarProperty Name="privilege" ColumnName="privilege" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="PHOTO" ColumnName="PHOTO" />
+                <ScalarProperty Name="MVerifyPass" ColumnName="MVerifyPass" />
+                <ScalarProperty Name="LUNCHDURATION" ColumnName="LUNCHDURATION" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="MINZU" ColumnName="MINZU" />
+                <ScalarProperty Name="HOLIDAY" ColumnName="HOLIDAY" />
+                <ScalarProperty Name="SEP" ColumnName="SEP" />
+                <ScalarProperty Name="OVERTIME" ColumnName="OVERTIME" />
+                <ScalarProperty Name="OUTEARLY" ColumnName="OUTEARLY" />
+                <ScalarProperty Name="INLATE" ColumnName="INLATE" />
+                <ScalarProperty Name="ATT" ColumnName="ATT" />
+                <ScalarProperty Name="SECURITYFLAGS" ColumnName="SECURITYFLAGS" />
+                <ScalarProperty Name="DEFAULTDEPTID" ColumnName="DEFAULTDEPTID" />
+                <ScalarProperty Name="VERIFICATIONMETHOD" ColumnName="VERIFICATIONMETHOD" />
+                <ScalarProperty Name="FPHONE" ColumnName="FPHONE" />
+                <ScalarProperty Name="OPHONE" ColumnName="OPHONE" />
+                <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+                <ScalarProperty Name="STATE" ColumnName="STATE" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="STREET" ColumnName="STREET" />
+                <ScalarProperty Name="HIREDDAY" ColumnName="HIREDDAY" />
+                <ScalarProperty Name="BIRTHDAY" ColumnName="BIRTHDAY" />
+                <ScalarProperty Name="PAGER" ColumnName="PAGER" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SSN" ColumnName="SSN" />
+                <ScalarProperty Name="BADGENUMBER" ColumnName="BADGENUMBER" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserUpdates">
+            <EntityTypeMapping TypeName="bioModel.UserUpdates">
+              <MappingFragment StoreEntitySet="UserUpdates">
+                <ScalarProperty Name="BadgeNumber" ColumnName="BadgeNumber" />
+                <ScalarProperty Name="UpdateId" ColumnName="UpdateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserUsedSClasses">
+            <EntityTypeMapping TypeName="bioModel.UserUsedSClasses">
+              <MappingFragment StoreEntitySet="UserUsedSClasses">
+                <ScalarProperty Name="SchId" ColumnName="SchId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmOpLog">
+            <EntityTypeMapping TypeName="bioModel.EmOpLog">
+              <MappingFragment StoreEntitySet="EmOpLog">
+                <ScalarProperty Name="SensorId" ColumnName="SensorId" />
+                <ScalarProperty Name="Params4" ColumnName="Params4" />
+                <ScalarProperty Name="Params3" ColumnName="Params3" />
+                <ScalarProperty Name="Params2" ColumnName="Params2" />
+                <ScalarProperty Name="Params1" ColumnName="Params1" />
+                <ScalarProperty Name="manipulationID" ColumnName="manipulationID" />
+                <ScalarProperty Name="OperateTime" ColumnName="OperateTime" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServerLog">
+            <EntityTypeMapping TypeName="bioModel.ServerLog">
+              <MappingFragment StoreEntitySet="ServerLog">
+                <ScalarProperty Name="OPERATOR" ColumnName="OPERATOR" />
+                <ScalarProperty Name="SENSORID" ColumnName="SENSORID" />
+                <ScalarProperty Name="EVENTTIME" ColumnName="EVENTTIME" />
+                <ScalarProperty Name="parameter" ColumnName="parameter" />
+                <ScalarProperty Name="EnrollNumber" ColumnName="EnrollNumber" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="EVENT" ColumnName="EVENT" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersMachines">
+            <EntityTypeMapping TypeName="bioModel.UsersMachines">
+              <MappingFragment StoreEntitySet="UsersMachines">
+                <ScalarProperty Name="DEVICEID" ColumnName="DEVICEID" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2266,22 +2256,57 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="bioModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="bioModel.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="spGetAusencias" FunctionName="bioModel.Store.spGetAusencias" />
-          <EntitySetMapping Name="Incidencia">
-            <EntityTypeMapping TypeName="bioModel.Incidencia">
-              <MappingFragment StoreEntitySet="Incidencia">
-                <ScalarProperty Name="justificado" ColumnName="justificado" />
-                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
-                <ScalarProperty Name="tipoJustificacion" ColumnName="tipoJustificacion" />
-                <ScalarProperty Name="tipoIncidencia" ColumnName="tipoIncidencia" />
-                <ScalarProperty Name="usuario" ColumnName="usuario" />
-                <ScalarProperty Name="horaS" ColumnName="horaS" />
-                <ScalarProperty Name="horaE" ColumnName="horaE" />
+          <FunctionImportMapping FunctionImportName="spGetDptoInc" FunctionName="bioModel.Store.spGetDptoInc">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bioModel.spGetDptoInc_Result">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="horaE" ColumnName="horaE" />
+                <ScalarProperty Name="horaS" ColumnName="horaS" />
+                <ScalarProperty Name="tipoIncidencia" ColumnName="tipoIncidencia" />
+                <ScalarProperty Name="tipoJustificacion" ColumnName="tipoJustificacion" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="justificado" ColumnName="justificado" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetUserInc" FunctionName="bioModel.Store.spGetUserInc">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bioModel.spGetUserInc_Result">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="horaE" ColumnName="horaE" />
+                <ScalarProperty Name="horaS" ColumnName="horaS" />
+                <ScalarProperty Name="tipoIncidencia" ColumnName="tipoIncidencia" />
+                <ScalarProperty Name="tipoJustificacion" ColumnName="tipoJustificacion" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="justificado" ColumnName="justificado" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetUserMarks" FunctionName="bioModel.Store.spGetUserMarks">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bioModel.spGetUserMarks_Result">
+                <ScalarProperty Name="dia" ColumnName="dia" />
+                <ScalarProperty Name="fullfecha" ColumnName="fullfecha" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="entrada" ColumnName="entrada" />
+                <ScalarProperty Name="salida" ColumnName="salida" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spUpdateJustificarInc" FunctionName="bioModel.Store.spUpdateJustificarInc" />
+          <EntitySetMapping Name="roles">
+            <EntityTypeMapping TypeName="bioModel.roles">
+              <MappingFragment StoreEntitySet="roles">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

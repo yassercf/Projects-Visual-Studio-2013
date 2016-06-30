@@ -17,8 +17,24 @@ namespace censa {
             //Session["fechaActual"] = DateTime.Now;
             int userid = (int)Session["userid"];
             int cantinc = bio.Incidencia.Where(x => x.usuario == userid).Where(y=>y.justificado == false).Count();
-            notification_inci.Text = cantinc.ToString();
             notification_header.Text = cantinc.ToString();
+            USERINFO usr = bio.USERINFO.Where(y => y.USERID == userid).Single();
+            roles r = bio.roles.Where(x => x.id == usr.privilege).Single();
+            HyperLink1.Text = usr.NAME + " (" + r.descripcion + ")";
+            
+            //Byte bytes = (Byte)Session["foto"];
+            //ASPxBinaryImage1.Response.Buffer = true;
+            //ASPxBinaryImage1.Response.Charset = "";
+            //ASPxBinaryImage1.Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            ////Response.ContentType = dt.Rows[0]["ContentType"].ToString();
+            ////Response.AddHeader("content-disposition", "attachment;filename="
+            ////+ dt.Rows[0]["Name"].ToString());
+
+            //ASPxBinaryImage1.Response.BinaryWrite(bytes);
+            //ASPxBinaryImage1.Response.Flush();
+            //ASPxBinaryImage1.Response.End();
+
+            
         }
 
         public static string MonthName(int month)
