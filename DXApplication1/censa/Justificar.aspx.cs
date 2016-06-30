@@ -11,9 +11,11 @@ namespace censa
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["userid"] != null)
+            int idrol = (int)Session["roll"];
+            if (Session["userid"] != null && idrol > 0)
             {
                 ASPxLabel1.Text = RootMaster.MonthName(((DateTime)Session["fechaActual"]).Month);
+
             }
             else { Server.Transfer("Default.aspx"); }
         }
@@ -30,8 +32,8 @@ namespace censa
                 bio.SaveChanges();
             }
             catch (Exception ex) { throw new Exception(ex.Message); }
-                
-                
+
+
             e.Cancel = true;
             ASPxGridView1.CancelEdit();
         }

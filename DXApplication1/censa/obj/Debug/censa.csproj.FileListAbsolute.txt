@@ -1,11 +1,294 @@
-e:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\censa.dll.config
-e:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\censa.dll
-e:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\censa.pdb
-e:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\obj\Debug\censa.dll
-e:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\obj\Debug\censa.pdb
-e:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\EntityFramework.dll
-e:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\EntityFramework.SqlServer.dll
-e:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\EntityFramework.xml
-e:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\EntityFramework.SqlServer.xml
-e:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\obj\Debug\censa.dll.licenses
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\censa.dll.config
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\censa.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\censa.pdb
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Charts.v15.1.Core.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Data.v15.1.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Office.v15.1.Core.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.PivotGrid.v15.1.Core.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Printing.v15.1.Core.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.RichEdit.v15.1.Core.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.SpellChecker.v15.1.Core.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Spreadsheet.v15.1.Core.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Utils.v15.1.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Web.ASPxGauges.v15.1.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Web.ASPxHtmlEditor.v15.1.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Web.ASPxPivotGrid.v15.1.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Web.ASPxRichEdit.v15.1.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Web.ASPxScheduler.v15.1.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Web.ASPxSpellChecker.v15.1.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Web.ASPxSpreadsheet.v15.1.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Web.ASPxThemes.v15.1.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Web.ASPxTreeList.v15.1.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Web.v15.1.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.XtraCharts.v15.1.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.XtraCharts.v15.1.Web.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.XtraGauges.v15.1.Core.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.XtraGauges.v15.1.Presets.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.XtraPivotGrid.v15.1.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.XtraReports.v15.1.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.XtraReports.v15.1.Web.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.XtraScheduler.v15.1.Core.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\EntityFramework.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\EntityFramework.SqlServer.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\EntityFramework.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\EntityFramework.SqlServer.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Data.v15.1.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Web.v15.1.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Web.ASPxHtmlEditor.v15.1.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Web.ASPxSpellChecker.v15.1.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Web.ASPxTreeList.v15.1.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Web.ASPxPivotGrid.v15.1.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Utils.v15.1.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Office.v15.1.Core.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.SpellChecker.v15.1.Core.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.XtraCharts.v15.1.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.XtraGauges.v15.1.Core.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.XtraGauges.v15.1.Presets.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Web.ASPxGauges.v15.1.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.XtraCharts.v15.1.Web.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Printing.v15.1.Core.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.XtraReports.v15.1.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.XtraReports.v15.1.Web.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.XtraPivotGrid.v15.1.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.PivotGrid.v15.1.Core.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.XtraScheduler.v15.1.Core.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Web.ASPxScheduler.v15.1.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Spreadsheet.v15.1.Core.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Web.ASPxSpreadsheet.v15.1.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.RichEdit.v15.1.Core.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\DevExpress.Web.ASPxRichEdit.v15.1.xml
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\de\DevExpress.Data.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\es\DevExpress.Data.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ja\DevExpress.Data.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ru\DevExpress.Data.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\de\DevExpress.Web.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\es\DevExpress.Web.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ja\DevExpress.Web.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ru\DevExpress.Web.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\de\DevExpress.Web.ASPxHtmlEditor.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\es\DevExpress.Web.ASPxHtmlEditor.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ja\DevExpress.Web.ASPxHtmlEditor.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ru\DevExpress.Web.ASPxHtmlEditor.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\de\DevExpress.Web.ASPxSpellChecker.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\es\DevExpress.Web.ASPxSpellChecker.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ja\DevExpress.Web.ASPxSpellChecker.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ru\DevExpress.Web.ASPxSpellChecker.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\de\DevExpress.Web.ASPxTreeList.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\es\DevExpress.Web.ASPxTreeList.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ja\DevExpress.Web.ASPxTreeList.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ru\DevExpress.Web.ASPxTreeList.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\de\DevExpress.Utils.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\es\DevExpress.Utils.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ja\DevExpress.Utils.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ru\DevExpress.Utils.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\de\DevExpress.Office.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\es\DevExpress.Office.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ja\DevExpress.Office.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ru\DevExpress.Office.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\de\DevExpress.XtraCharts.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\es\DevExpress.XtraCharts.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ja\DevExpress.XtraCharts.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ru\DevExpress.XtraCharts.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\de\DevExpress.XtraGauges.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\es\DevExpress.XtraGauges.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ja\DevExpress.XtraGauges.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ru\DevExpress.XtraGauges.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\de\DevExpress.XtraGauges.v15.1.Presets.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\es\DevExpress.XtraGauges.v15.1.Presets.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ja\DevExpress.XtraGauges.v15.1.Presets.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ru\DevExpress.XtraGauges.v15.1.Presets.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\de\DevExpress.Printing.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\es\DevExpress.Printing.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ja\DevExpress.Printing.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ru\DevExpress.Printing.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\de\DevExpress.XtraReports.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\es\DevExpress.XtraReports.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ja\DevExpress.XtraReports.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ru\DevExpress.XtraReports.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\de\DevExpress.XtraReports.v15.1.Web.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\es\DevExpress.XtraReports.v15.1.Web.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ja\DevExpress.XtraReports.v15.1.Web.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ru\DevExpress.XtraReports.v15.1.Web.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\de\DevExpress.XtraPivotGrid.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\es\DevExpress.XtraPivotGrid.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ja\DevExpress.XtraPivotGrid.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ru\DevExpress.XtraPivotGrid.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\de\DevExpress.PivotGrid.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\es\DevExpress.PivotGrid.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ja\DevExpress.PivotGrid.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ru\DevExpress.PivotGrid.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\de\DevExpress.XtraScheduler.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\es\DevExpress.XtraScheduler.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ja\DevExpress.XtraScheduler.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ru\DevExpress.XtraScheduler.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\de\DevExpress.Web.ASPxScheduler.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\es\DevExpress.Web.ASPxScheduler.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ja\DevExpress.Web.ASPxScheduler.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ru\DevExpress.Web.ASPxScheduler.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\de\DevExpress.Spreadsheet.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\es\DevExpress.Spreadsheet.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ja\DevExpress.Spreadsheet.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ru\DevExpress.Spreadsheet.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\de\DevExpress.Web.ASPxSpreadsheet.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\es\DevExpress.Web.ASPxSpreadsheet.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ja\DevExpress.Web.ASPxSpreadsheet.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ru\DevExpress.Web.ASPxSpreadsheet.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\de\DevExpress.RichEdit.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\es\DevExpress.RichEdit.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ja\DevExpress.RichEdit.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ru\DevExpress.RichEdit.v15.1.Core.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\de\DevExpress.Web.ASPxRichEdit.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\es\DevExpress.Web.ASPxRichEdit.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ja\DevExpress.Web.ASPxRichEdit.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\bin\ru\DevExpress.Web.ASPxRichEdit.v15.1.resources.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\obj\Debug\censa.dll.licenses
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\obj\Debug\censa.dll
+E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\obj\Debug\censa.pdb
+C:\Users\usuario\Desktop\Proyecto\censa\bin\censa.dll.config
+C:\Users\usuario\Desktop\Proyecto\censa\bin\censa.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\censa.pdb
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Charts.v15.1.Core.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Data.v15.1.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Office.v15.1.Core.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.PivotGrid.v15.1.Core.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Printing.v15.1.Core.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.RichEdit.v15.1.Core.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.SpellChecker.v15.1.Core.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Spreadsheet.v15.1.Core.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Utils.v15.1.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Web.ASPxGauges.v15.1.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Web.ASPxHtmlEditor.v15.1.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Web.ASPxPivotGrid.v15.1.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Web.ASPxRichEdit.v15.1.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Web.ASPxScheduler.v15.1.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Web.ASPxSpellChecker.v15.1.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Web.ASPxSpreadsheet.v15.1.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Web.ASPxThemes.v15.1.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Web.ASPxTreeList.v15.1.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Web.v15.1.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.XtraCharts.v15.1.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.XtraCharts.v15.1.Web.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.XtraGauges.v15.1.Core.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.XtraGauges.v15.1.Presets.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.XtraPivotGrid.v15.1.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.XtraReports.v15.1.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.XtraReports.v15.1.Web.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.XtraScheduler.v15.1.Core.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\EntityFramework.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\EntityFramework.SqlServer.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\EntityFramework.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\EntityFramework.SqlServer.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Data.v15.1.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Web.v15.1.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Web.ASPxHtmlEditor.v15.1.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Web.ASPxSpellChecker.v15.1.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Web.ASPxTreeList.v15.1.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Web.ASPxPivotGrid.v15.1.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Utils.v15.1.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Office.v15.1.Core.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.SpellChecker.v15.1.Core.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.XtraCharts.v15.1.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.XtraGauges.v15.1.Core.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.XtraGauges.v15.1.Presets.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Web.ASPxGauges.v15.1.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.XtraCharts.v15.1.Web.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Printing.v15.1.Core.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.XtraReports.v15.1.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.XtraReports.v15.1.Web.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.XtraPivotGrid.v15.1.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.PivotGrid.v15.1.Core.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.XtraScheduler.v15.1.Core.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Web.ASPxScheduler.v15.1.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Spreadsheet.v15.1.Core.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Web.ASPxSpreadsheet.v15.1.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.RichEdit.v15.1.Core.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\DevExpress.Web.ASPxRichEdit.v15.1.xml
+C:\Users\usuario\Desktop\Proyecto\censa\bin\de\DevExpress.Data.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\es\DevExpress.Data.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ja\DevExpress.Data.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ru\DevExpress.Data.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\de\DevExpress.Web.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\es\DevExpress.Web.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ja\DevExpress.Web.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ru\DevExpress.Web.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\de\DevExpress.Web.ASPxHtmlEditor.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\es\DevExpress.Web.ASPxHtmlEditor.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ja\DevExpress.Web.ASPxHtmlEditor.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ru\DevExpress.Web.ASPxHtmlEditor.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\de\DevExpress.Web.ASPxSpellChecker.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\es\DevExpress.Web.ASPxSpellChecker.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ja\DevExpress.Web.ASPxSpellChecker.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ru\DevExpress.Web.ASPxSpellChecker.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\de\DevExpress.Web.ASPxTreeList.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\es\DevExpress.Web.ASPxTreeList.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ja\DevExpress.Web.ASPxTreeList.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ru\DevExpress.Web.ASPxTreeList.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\de\DevExpress.Utils.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\es\DevExpress.Utils.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ja\DevExpress.Utils.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ru\DevExpress.Utils.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\de\DevExpress.Office.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\es\DevExpress.Office.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ja\DevExpress.Office.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ru\DevExpress.Office.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\de\DevExpress.XtraCharts.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\es\DevExpress.XtraCharts.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ja\DevExpress.XtraCharts.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ru\DevExpress.XtraCharts.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\de\DevExpress.XtraGauges.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\es\DevExpress.XtraGauges.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ja\DevExpress.XtraGauges.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ru\DevExpress.XtraGauges.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\de\DevExpress.XtraGauges.v15.1.Presets.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\es\DevExpress.XtraGauges.v15.1.Presets.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ja\DevExpress.XtraGauges.v15.1.Presets.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ru\DevExpress.XtraGauges.v15.1.Presets.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\de\DevExpress.Printing.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\es\DevExpress.Printing.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ja\DevExpress.Printing.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ru\DevExpress.Printing.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\de\DevExpress.XtraReports.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\es\DevExpress.XtraReports.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ja\DevExpress.XtraReports.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ru\DevExpress.XtraReports.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\de\DevExpress.XtraReports.v15.1.Web.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\es\DevExpress.XtraReports.v15.1.Web.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ja\DevExpress.XtraReports.v15.1.Web.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ru\DevExpress.XtraReports.v15.1.Web.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\de\DevExpress.XtraPivotGrid.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\es\DevExpress.XtraPivotGrid.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ja\DevExpress.XtraPivotGrid.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ru\DevExpress.XtraPivotGrid.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\de\DevExpress.PivotGrid.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\es\DevExpress.PivotGrid.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ja\DevExpress.PivotGrid.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ru\DevExpress.PivotGrid.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\de\DevExpress.XtraScheduler.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\es\DevExpress.XtraScheduler.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ja\DevExpress.XtraScheduler.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ru\DevExpress.XtraScheduler.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\de\DevExpress.Web.ASPxScheduler.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\es\DevExpress.Web.ASPxScheduler.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ja\DevExpress.Web.ASPxScheduler.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ru\DevExpress.Web.ASPxScheduler.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\de\DevExpress.Spreadsheet.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\es\DevExpress.Spreadsheet.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ja\DevExpress.Spreadsheet.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ru\DevExpress.Spreadsheet.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\de\DevExpress.Web.ASPxSpreadsheet.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\es\DevExpress.Web.ASPxSpreadsheet.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ja\DevExpress.Web.ASPxSpreadsheet.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ru\DevExpress.Web.ASPxSpreadsheet.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\de\DevExpress.RichEdit.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\es\DevExpress.RichEdit.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ja\DevExpress.RichEdit.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ru\DevExpress.RichEdit.v15.1.Core.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\de\DevExpress.Web.ASPxRichEdit.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\es\DevExpress.Web.ASPxRichEdit.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ja\DevExpress.Web.ASPxRichEdit.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\bin\ru\DevExpress.Web.ASPxRichEdit.v15.1.resources.dll
+C:\Users\usuario\Desktop\Proyecto\censa\obj\Debug\censa.csprojResolveAssemblyReference.cache
+C:\Users\usuario\Desktop\Proyecto\censa\obj\Debug\censa.dll.licenses
+C:\Users\usuario\Desktop\Proyecto\censa\obj\Debug\censa.dll
+C:\Users\usuario\Desktop\Proyecto\censa\obj\Debug\censa.pdb
 E:\Documentos\Visual Studio 2013\Projects\DXApplication1\censa\obj\Debug\censa.csprojResolveAssemblyReference.cache

@@ -633,7 +633,7 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="SchId" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Incidenci__tipoI__6EC0713C">
+        <Association Name="FK__Incidenci__tipoI__6B79F03D">
           <End Role="TipoIncidencia" Type="Self.TipoIncidencia" Multiplicity="0..1" />
           <End Role="Incidencia" Type="Self.Incidencia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -645,7 +645,7 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Incidenci__tipoJ__6FB49575">
+        <Association Name="FK__Incidenci__tipoJ__6C6E1476">
           <End Role="TipoJustificacion" Type="Self.TipoJustificacion" Multiplicity="0..1" />
           <End Role="Incidencia" Type="Self.Incidencia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -701,6 +701,9 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
         <Function Name="spGetDptoInc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="departamento" Type="int" Mode="In" />
           <Parameter Name="fecha" Type="date" Mode="In" />
+        </Function>
+        <Function Name="spGetUserFechasMark" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userid" Type="int" Mode="In" />
         </Function>
         <Function Name="spGetUserInc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userid" Type="int" Mode="In" />
@@ -787,11 +790,11 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
     [UsersMachines].[DEVICEID] AS [DEVICEID]
     FROM [dbo].[UsersMachines] AS [UsersMachines]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Incidenci__tipoI__6EC0713C" Association="Self.FK__Incidenci__tipoI__6EC0713C">
+          <AssociationSet Name="FK__Incidenci__tipoI__6B79F03D" Association="Self.FK__Incidenci__tipoI__6B79F03D">
             <End Role="TipoIncidencia" EntitySet="TipoIncidencia" />
             <End Role="Incidencia" EntitySet="Incidencia" />
           </AssociationSet>
-          <AssociationSet Name="FK__Incidenci__tipoJ__6FB49575" Association="Self.FK__Incidenci__tipoJ__6FB49575">
+          <AssociationSet Name="FK__Incidenci__tipoJ__6C6E1476" Association="Self.FK__Incidenci__tipoJ__6C6E1476">
             <End Role="TipoJustificacion" EntitySet="TipoJustificacion" />
             <End Role="Incidencia" EntitySet="Incidencia" />
           </AssociationSet>
@@ -899,6 +902,9 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
             <Parameter Name="justificado" Mode="In" Type="Boolean" />
           </FunctionImport>
           <EntitySet Name="roles" EntityType="bioModel.roles" />
+          <FunctionImport Name="spGetUserFechasMark" ReturnType="Collection(DateTime)">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="ACGroup">
           <Key>
@@ -2306,6 +2312,7 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spGetUserFechasMark" FunctionName="bioModel.Store.spGetUserFechasMark" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -1,5 +1,108 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="bioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="bioEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ACGroup" EntityType="bioModel.ACGroup" />
+    <EntitySet Name="ACTimeZones" EntityType="bioModel.ACTimeZones" />
+    <EntitySet Name="ACUnlockComb" EntityType="bioModel.ACUnlockComb" />
+    <EntitySet Name="AlarmLog" EntityType="bioModel.AlarmLog" />
+    <EntitySet Name="AttParam" EntityType="bioModel.AttParam" />
+    <EntitySet Name="AuditedExc" EntityType="bioModel.AuditedExc" />
+    <EntitySet Name="AUTHDEVICE" EntityType="bioModel.AUTHDEVICE" />
+    <EntitySet Name="CHECKEXACT" EntityType="bioModel.CHECKEXACT" />
+    <EntitySet Name="CHECKINOUT" EntityType="bioModel.CHECKINOUT" />
+    <EntitySet Name="DEPARTMENTS" EntityType="bioModel.DEPARTMENTS" />
+    <EntitySet Name="DeptUsedSchs" EntityType="bioModel.DeptUsedSchs" />
+    <EntitySet Name="FaceTemp" EntityType="bioModel.FaceTemp" />
+    <EntitySet Name="HOLIDAYS" EntityType="bioModel.HOLIDAYS" />
+    <EntitySet Name="Incidencia" EntityType="bioModel.Incidencia" />
+    <EntitySet Name="LeaveClass" EntityType="bioModel.LeaveClass" />
+    <EntitySet Name="LeaveClass1" EntityType="bioModel.LeaveClass1" />
+    <EntitySet Name="Machines" EntityType="bioModel.Machines" />
+    <EntitySet Name="NUM_RUN" EntityType="bioModel.NUM_RUN" />
+    <EntitySet Name="NUM_RUN_DEIL" EntityType="bioModel.NUM_RUN_DEIL" />
+    <EntitySet Name="ReportItem" EntityType="bioModel.ReportItem" />
+    <EntitySet Name="SchClass" EntityType="bioModel.SchClass" />
+    <EntitySet Name="SECURITYDETAILS" EntityType="bioModel.SECURITYDETAILS" />
+    <EntitySet Name="SHIFT" EntityType="bioModel.SHIFT" />
+    <EntitySet Name="sysdiagrams" EntityType="bioModel.sysdiagrams" />
+    <EntitySet Name="SystemLog" EntityType="bioModel.SystemLog" />
+    <EntitySet Name="TBSMSALLOT" EntityType="bioModel.TBSMSALLOT" />
+    <EntitySet Name="TBSMSINFO" EntityType="bioModel.TBSMSINFO" />
+    <EntitySet Name="TEMPLATE" EntityType="bioModel.TEMPLATE" />
+    <EntitySet Name="TipoIncidencia" EntityType="bioModel.TipoIncidencia" />
+    <EntitySet Name="TipoJustificacion" EntityType="bioModel.TipoJustificacion" />
+    <EntitySet Name="USER_OF_RUN" EntityType="bioModel.USER_OF_RUN" />
+    <EntitySet Name="USER_SPEDAY" EntityType="bioModel.USER_SPEDAY" />
+    <EntitySet Name="USER_TEMP_SCH" EntityType="bioModel.USER_TEMP_SCH" />
+    <EntitySet Name="UserACMachines" EntityType="bioModel.UserACMachines" />
+    <EntitySet Name="UserACPrivilege" EntityType="bioModel.UserACPrivilege" />
+    <EntitySet Name="USERINFO" EntityType="bioModel.USERINFO" />
+    <EntitySet Name="UserUpdates" EntityType="bioModel.UserUpdates" />
+    <EntitySet Name="UserUsedSClasses" EntityType="bioModel.UserUsedSClasses" />
+    <EntitySet Name="EmOpLog" EntityType="bioModel.EmOpLog" />
+    <EntitySet Name="ServerLog" EntityType="bioModel.ServerLog" />
+    <EntitySet Name="UsersMachines" EntityType="bioModel.UsersMachines" />
+    <AssociationSet Name="FK__Incidenci__tipoI__6EC0713C" Association="bioModel.FK__Incidenci__tipoI__6EC0713C">
+      <End Role="TipoIncidencia" EntitySet="TipoIncidencia" />
+      <End Role="Incidencia" EntitySet="Incidencia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Incidenci__tipoJ__6FB49575" Association="bioModel.FK__Incidenci__tipoJ__6FB49575">
+      <End Role="TipoJustificacion" EntitySet="TipoJustificacion" />
+      <End Role="Incidencia" EntitySet="Incidencia" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(bioModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(bioModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="spGetAusencias" />
+    <FunctionImport Name="spGetDptoInc" ReturnType="Collection(bioModel.spGetDptoInc_Result)">
+      <Parameter Name="departamento" Mode="In" Type="Int32" />
+      <Parameter Name="fecha" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spGetUserInc" ReturnType="Collection(bioModel.spGetUserInc_Result)">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+      <Parameter Name="fecha" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spGetUserMarks" ReturnType="Collection(bioModel.spGetUserMarks_Result)">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+      <Parameter Name="fecha" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spUpdateJustificarInc">
+      <Parameter Name="inci" Mode="In" Type="Int32" />
+      <Parameter Name="tipoJustificacion" Mode="In" Type="Int32" />
+      <Parameter Name="justificado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <EntitySet Name="roles" EntityType="bioModel.roles" />
+    <FunctionImport Name="spGetUserFechasMark" ReturnType="Collection(DateTime)">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
   <EntityType Name="ACGroup">
     <Key>
       <PropertyRef Name="GroupID" />
@@ -60,9 +163,9 @@
     <Key>
       <PropertyRef Name="PARANAME" />
     </Key>
-    <Property Name="PARANAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PARANAME" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="PARATYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-    <Property Name="PARAVALUE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PARAVALUE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="AuditedExc">
     <Key>
@@ -179,17 +282,33 @@
     <Property Name="DeptID" Type="Int16" />
     <Property Name="timezone" Type="Int32" />
   </EntityType>
+  <EntityType Name="Incidencia">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha" Type="DateTime" Precision="0" />
+    <Property Name="horaE" Type="Time" Precision="7" />
+    <Property Name="horaS" Type="Time" Precision="7" />
+    <Property Name="usuario" Type="Int32" />
+    <Property Name="tipoIncidencia" Type="Int32" />
+    <Property Name="tipoJustificacion" Type="Int32" />
+    <Property Name="observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="justificado" Type="Boolean" />
+    <NavigationProperty Name="TipoIncidencia1" Relationship="bioModel.FK__Incidenci__tipoI__6EC0713C" FromRole="Incidencia" ToRole="TipoIncidencia" />
+    <NavigationProperty Name="TipoJustificacion1" Relationship="bioModel.FK__Incidenci__tipoJ__6FB49575" FromRole="Incidencia" ToRole="TipoJustificacion" />
+  </EntityType>
   <EntityType Name="LeaveClass">
     <Key>
       <PropertyRef Name="LeaveId" />
     </Key>
     <Property Name="LeaveId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="LeaveName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LeaveName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="MinUnit" Type="Double" Nullable="false" />
     <Property Name="Unit" Type="Int16" Nullable="false" />
     <Property Name="RemaindProc" Type="Int16" Nullable="false" />
     <Property Name="RemaindCount" Type="Int16" Nullable="false" />
-    <Property Name="ReportSymbol" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ReportSymbol" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
     <Property Name="Deduct" Type="Double" Nullable="false" />
     <Property Name="Color" Type="Int32" Nullable="false" />
     <Property Name="Classify" Type="Int16" Nullable="false" />
@@ -199,12 +318,12 @@
       <PropertyRef Name="LeaveId" />
     </Key>
     <Property Name="LeaveId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="LeaveName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LeaveName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="MinUnit" Type="Double" Nullable="false" />
     <Property Name="Unit" Type="Int16" Nullable="false" />
     <Property Name="RemaindProc" Type="Int16" Nullable="false" />
     <Property Name="RemaindCount" Type="Int16" Nullable="false" />
-    <Property Name="ReportSymbol" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ReportSymbol" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
     <Property Name="Deduct" Type="Double" Nullable="false" />
     <Property Name="LeaveType" Type="Int16" Nullable="false" />
     <Property Name="Color" Type="Int32" Nullable="false" />
@@ -216,7 +335,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="MachineAlias" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MachineAlias" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="ConnectType" Type="Int32" Nullable="false" />
     <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="SerialPort" Type="Int32" />
@@ -251,7 +370,7 @@
     </Key>
     <Property Name="NUM_RUNID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="OLDID" Type="Int32" />
-    <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NAME" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="STARTDATE" Type="DateTime" Precision="3" />
     <Property Name="ENDDATE" Type="DateTime" Precision="3" />
     <Property Name="CYLE" Type="Int16" />
@@ -280,7 +399,7 @@
     <Property Name="ShowIt" Type="Int16" />
     <Property Name="RIName" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
     <Property Name="UnitName" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
-    <Property Name="Formula" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="Formula" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
     <Property Name="CalcBySchClass" Type="Int16" />
     <Property Name="StatisticMethod" Type="Int16" />
     <Property Name="CalcLast" Type="Int16" />
@@ -291,7 +410,7 @@
       <PropertyRef Name="schClassid" />
     </Key>
     <Property Name="schClassid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="schName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="schName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="LateMinutes" Type="Int32" />
@@ -348,6 +467,16 @@
     <Property Name="CYCLE" Type="Int16" />
     <Property Name="UNITS" Type="Int16" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
   <EntityType Name="SystemLog">
     <Key>
       <PropertyRef Name="ID" />
@@ -373,7 +502,7 @@
       <PropertyRef Name="REFERENCE" />
     </Key>
     <Property Name="REFERENCE" Type="Int32" Nullable="false" />
-    <Property Name="SMSID" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SMSID" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
     <Property Name="SMSINDEX" Type="Int32" Nullable="false" />
     <Property Name="SMSTYPE" Type="Int32" />
     <Property Name="SMSCONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -388,7 +517,7 @@
     <Property Name="TEMPLATEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="USERID" Type="Int32" Nullable="false" />
     <Property Name="FINGERID" Type="Int32" Nullable="false" />
-    <Property Name="TEMPLATE1" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="TEMPLATE1" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
     <Property Name="TEMPLATE2" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="TEMPLATE3" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="BITMAPPICTURE" Type="Binary" MaxLength="Max" FixedLength="false" />
@@ -486,7 +615,7 @@
       <PropertyRef Name="USERID" />
     </Key>
     <Property Name="USERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="BADGENUMBER" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BADGENUMBER" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
     <Property Name="SSN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="NAME" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
     <Property Name="GENDER" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
@@ -575,7 +704,7 @@
       <PropertyRef Name="EVENTTIME" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="EVENT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EVENT" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="USERID" Type="Int32" Nullable="false" />
     <Property Name="EnrollNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="parameter" Type="Int16" />
@@ -592,162 +721,6 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="USERID" Type="Int32" Nullable="false" />
     <Property Name="DEVICEID" Type="Int32" Nullable="false" />
-  </EntityType>
-  <EntityContainer Name="bioEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="ACGroup" EntityType="Self.ACGroup" />
-    <EntitySet Name="ACTimeZones" EntityType="Self.ACTimeZones" />
-    <EntitySet Name="ACUnlockComb" EntityType="Self.ACUnlockComb" />
-    <EntitySet Name="AlarmLog" EntityType="Self.AlarmLog" />
-    <EntitySet Name="AttParam" EntityType="Self.AttParam" />
-    <EntitySet Name="AuditedExc" EntityType="Self.AuditedExc" />
-    <EntitySet Name="AUTHDEVICE" EntityType="Self.AUTHDEVICE" />
-    <EntitySet Name="CHECKEXACT" EntityType="Self.CHECKEXACT" />
-    <EntitySet Name="CHECKINOUT" EntityType="Self.CHECKINOUT" />
-    <EntitySet Name="DEPARTMENTS" EntityType="Self.DEPARTMENTS" />
-    <EntitySet Name="DeptUsedSchs" EntityType="Self.DeptUsedSchs" />
-    <EntitySet Name="FaceTemp" EntityType="Self.FaceTemp" />
-    <EntitySet Name="HOLIDAYS" EntityType="Self.HOLIDAYS" />
-    <EntitySet Name="LeaveClass" EntityType="Self.LeaveClass" />
-    <EntitySet Name="LeaveClass1" EntityType="Self.LeaveClass1" />
-    <EntitySet Name="Machines" EntityType="Self.Machines" />
-    <EntitySet Name="NUM_RUN" EntityType="Self.NUM_RUN" />
-    <EntitySet Name="NUM_RUN_DEIL" EntityType="Self.NUM_RUN_DEIL" />
-    <EntitySet Name="ReportItem" EntityType="Self.ReportItem" />
-    <EntitySet Name="SchClass" EntityType="Self.SchClass" />
-    <EntitySet Name="SECURITYDETAILS" EntityType="Self.SECURITYDETAILS" />
-    <EntitySet Name="SHIFT" EntityType="Self.SHIFT" />
-    <EntitySet Name="SystemLog" EntityType="Self.SystemLog" />
-    <EntitySet Name="TBSMSALLOT" EntityType="Self.TBSMSALLOT" />
-    <EntitySet Name="TBSMSINFO" EntityType="Self.TBSMSINFO" />
-    <EntitySet Name="TEMPLATE" EntityType="Self.TEMPLATE" />
-    <EntitySet Name="TipoIncidencia" EntityType="Self.TipoIncidencia" />
-    <EntitySet Name="TipoJustificacion" EntityType="Self.TipoJustificacion" />
-    <EntitySet Name="USER_OF_RUN" EntityType="Self.USER_OF_RUN" />
-    <EntitySet Name="USER_SPEDAY" EntityType="Self.USER_SPEDAY" />
-    <EntitySet Name="USER_TEMP_SCH" EntityType="Self.USER_TEMP_SCH" />
-    <EntitySet Name="UserACMachines" EntityType="Self.UserACMachines" />
-    <EntitySet Name="UserACPrivilege" EntityType="Self.UserACPrivilege" />
-    <EntitySet Name="USERINFO" EntityType="Self.USERINFO" />
-    <EntitySet Name="UserUpdates" EntityType="Self.UserUpdates" />
-    <EntitySet Name="UserUsedSClasses" EntityType="Self.UserUsedSClasses" />
-    <EntitySet Name="EmOpLog" EntityType="Self.EmOpLog" />
-    <EntitySet Name="ServerLog" EntityType="Self.ServerLog" />
-    <EntitySet Name="UsersMachines" EntityType="Self.UsersMachines" />
-    <FunctionImport Name="spGetUserMarks" ReturnType="Collection(bioModel.spGetUserMarks_Result)">
-      <Parameter Name="userid" Mode="In" Type="Int32" />
-      <Parameter Name="fecha" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="spGetUserInc" ReturnType="Collection(bioModel.spGetUserInc_Result)">
-      <Parameter Name="userid" Mode="In" Type="Int32" />
-      <Parameter Name="fecha" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <EntitySet Name="Configuracion_Horario" EntityType="bioModel.Configuracion_Horario" />
-    <EntitySet Name="sysdiagrams" EntityType="bioModel.sysdiagrams" />
-    <FunctionImport Name="sp_alterdiagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="version" Mode="In" Type="Int32" />
-      <Parameter Name="definition" Mode="In" Type="Binary" />
-    </FunctionImport>
-    <FunctionImport Name="sp_creatediagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="version" Mode="In" Type="Int32" />
-      <Parameter Name="definition" Mode="In" Type="Binary" />
-    </FunctionImport>
-    <FunctionImport Name="sp_dropdiagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(bioModel.sp_helpdiagramdefinition_Result)">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(bioModel.sp_helpdiagrams_Result)">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_renamediagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="new_diagramname" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="sp_upgraddiagrams" />
-    <FunctionImport Name="spGetAusencias" />
-    <EntitySet Name="Incidencia" EntityType="bioModel.Incidencia" />
-    <AssociationSet Name="FK__Incidenci__tipoI__6EC0713C" Association="bioModel.FK__Incidenci__tipoI__6EC0713C">
-      <End Role="TipoIncidencia" EntitySet="TipoIncidencia" />
-      <End Role="Incidencia" EntitySet="Incidencia" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Incidenci__tipoJ__6FB49575" Association="bioModel.FK__Incidenci__tipoJ__6FB49575">
-      <End Role="TipoJustificacion" EntitySet="TipoJustificacion" />
-      <End Role="Incidencia" EntitySet="Incidencia" />
-    </AssociationSet>
-  </EntityContainer>
-  <ComplexType Name="spGetUserMarks_Result">
-    <Property Type="Int32" Name="dia" Nullable="true" />
-    <Property Type="DateTime" Name="fullfecha" Nullable="true" />
-    <Property Type="String" Name="nombre" Nullable="true" MaxLength="40" />
-    <Property Type="String" Name="usuario" Nullable="true" MaxLength="20" />
-    <Property Type="Time" Name="entrada" Nullable="true" />
-    <Property Type="Time" Name="salida" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="spGetUserInc_Result">
-    <Property Type="String" Name="NAME" Nullable="true" MaxLength="40" />
-    <Property Type="DateTime" Name="fecha" Nullable="true" />
-    <Property Type="Time" Name="horaE" Nullable="true" />
-    <Property Type="Time" Name="horaS" Nullable="true" />
-    <Property Type="Int32" Name="tipoIncidencia" Nullable="true" />
-    <Property Type="Int32" Name="tipoJustificacion" Nullable="true" />
-    <Property Type="String" Name="observaciones" Nullable="true" MaxLength="Max" />
-    <Property Type="Boolean" Name="justificado" Nullable="true" />
-    <Property Type="Int32" Name="id" Nullable="false" />
-  </ComplexType>
-  <EntityType Name="Configuracion_Horario">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="horaEntrada" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="horaSalida" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="activo" Type="Boolean" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
-  <ComplexType Name="sp_helpdiagramdefinition_Result">
-    <Property Type="Int32" Name="version" Nullable="true" />
-    <Property Type="Binary" Name="definition" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="sp_helpdiagrams_Result">
-    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-    <Property Type="Int32" Name="ID" Nullable="false" />
-    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-    <Property Type="Int32" Name="OwnerID" Nullable="false" />
-  </ComplexType>
-  <EntityType Name="Incidencia">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="fecha" Type="DateTime" Precision="0" />
-    <Property Name="horaE" Type="Time" Precision="7" />
-    <Property Name="horaS" Type="Time" Precision="7" />
-    <Property Name="usuario" Type="Int32" />
-    <Property Name="tipoIncidencia" Type="Int32" />
-    <Property Name="tipoJustificacion" Type="Int32" />
-    <Property Name="observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="justificado" Type="Boolean" />
-    <NavigationProperty Name="TipoIncidencia1" Relationship="bioModel.FK__Incidenci__tipoI__6EC0713C" FromRole="Incidencia" ToRole="TipoIncidencia" />
-    <NavigationProperty Name="TipoJustificacion1" Relationship="bioModel.FK__Incidenci__tipoJ__6FB49575" FromRole="Incidencia" ToRole="TipoJustificacion" />
   </EntityType>
   <Association Name="FK__Incidenci__tipoI__6EC0713C">
     <End Type="bioModel.TipoIncidencia" Role="TipoIncidencia" Multiplicity="0..1" />
@@ -773,4 +746,51 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spGetDptoInc_Result">
+    <Property Type="String" Name="NAME" Nullable="true" MaxLength="40" />
+    <Property Type="DateTime" Name="fecha" Nullable="true" />
+    <Property Type="Time" Name="horaE" Nullable="true" />
+    <Property Type="Time" Name="horaS" Nullable="true" />
+    <Property Type="Int32" Name="tipoIncidencia" Nullable="true" />
+    <Property Type="Int32" Name="tipoJustificacion" Nullable="true" />
+    <Property Type="String" Name="observaciones" Nullable="true" MaxLength="Max" />
+    <Property Type="Boolean" Name="justificado" Nullable="true" />
+    <Property Type="Int32" Name="id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spGetUserInc_Result">
+    <Property Type="String" Name="NAME" Nullable="true" MaxLength="40" />
+    <Property Type="DateTime" Name="fecha" Nullable="true" />
+    <Property Type="Time" Name="horaE" Nullable="true" />
+    <Property Type="Time" Name="horaS" Nullable="true" />
+    <Property Type="Int32" Name="tipoIncidencia" Nullable="true" />
+    <Property Type="Int32" Name="tipoJustificacion" Nullable="true" />
+    <Property Type="String" Name="observaciones" Nullable="true" MaxLength="Max" />
+    <Property Type="Boolean" Name="justificado" Nullable="true" />
+    <Property Type="Int32" Name="id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spGetUserMarks_Result">
+    <Property Type="Int32" Name="dia" Nullable="true" />
+    <Property Type="DateTime" Name="fullfecha" Nullable="true" />
+    <Property Type="String" Name="nombre" Nullable="true" MaxLength="40" />
+    <Property Type="Time" Name="entrada" Nullable="true" />
+    <Property Type="Time" Name="salida" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

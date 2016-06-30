@@ -117,15 +117,6 @@
     <Property Name="sn" Type="varchar" MaxLength="20" />
     <Property Name="UserExtFmt" Type="smallint" />
   </EntityType>
-  <EntityType Name="Configuracion_Horario">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="horaEntrada" Type="time" Precision="7" Nullable="false" />
-    <Property Name="horaSalida" Type="time" Precision="7" Nullable="false" />
-    <Property Name="activo" Type="bit" />
-  </EntityType>
   <EntityType Name="DEPARTMENTS">
     <Key>
       <PropertyRef Name="DEPTID" />
@@ -173,13 +164,6 @@ warning 6002: The table/view 'bio.dbo.EmOpLog' does not have a primary key defin
     <Property Name="Params4" Type="int" />
     <Property Name="SensorId" Type="varchar" MaxLength="5" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'bio.dbo.EXCNOTES' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="EXCNOTES">
-          <Property Name="USERID" Type="int" />
-          <Property Name="ATTDATE" Type="datetime" />
-          <Property Name="NOTES" Type="varchar" MaxLength="200" />
-        </EntityType>-->
   <EntityType Name="FaceTemp">
     <Key>
       <PropertyRef Name="TEMPLATEID" />
@@ -334,6 +318,13 @@ warning 6013: The table/view 'bio.dbo.EXCNOTES' does not have a primary key defi
     <Property Name="CalcLast" Type="smallint" />
     <Property Name="Notes" Type="image" />
   </EntityType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="255" />
+  </EntityType>
   <EntityType Name="SchClass">
     <Key>
       <PropertyRef Name="schClassid" />
@@ -435,12 +426,6 @@ warning 6002: The table/view 'bio.dbo.ServerLog' does not have a primary key def
     <Property Name="LogTag" Type="smallint" />
     <Property Name="LogDescr" Type="varchar" MaxLength="50" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'bio.dbo.TBKEY' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="TBKEY">
-          <Property Name="PreName" Type="varchar" MaxLength="12" />
-          <Property Name="ONEKEY" Type="int" />
-        </EntityType>-->
   <EntityType Name="TBSMSALLOT">
     <Key>
       <PropertyRef Name="REFERENCE" />
@@ -643,7 +628,7 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="SchId" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Incidenci__tipoI__6EC0713C">
+  <Association Name="FK__Incidenci__tipoI__6B79F03D">
     <End Role="TipoIncidencia" Type="Self.TipoIncidencia" Multiplicity="0..1" />
     <End Role="Incidencia" Type="Self.Incidencia" Multiplicity="*" />
     <ReferentialConstraint>
@@ -655,7 +640,7 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Incidenci__tipoJ__6FB49575">
+  <Association Name="FK__Incidenci__tipoJ__6C6E1476">
     <End Role="TipoJustificacion" Type="Self.TipoJustificacion" Multiplicity="0..1" />
     <End Role="Incidencia" Type="Self.Incidencia" Multiplicity="*" />
     <ReferentialConstraint>
@@ -708,6 +693,13 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
   </Function>
   <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="spGetAusencias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spGetDptoInc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="departamento" Type="int" Mode="In" />
+    <Parameter Name="fecha" Type="date" Mode="In" />
+  </Function>
+  <Function Name="spGetUserFechasMark" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userid" Type="int" Mode="In" />
+  </Function>
   <Function Name="spGetUserInc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="userid" Type="int" Mode="In" />
     <Parameter Name="fecha" Type="date" Mode="In" />
@@ -715,6 +707,11 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
   <Function Name="spGetUserMarks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="userid" Type="int" Mode="In" />
     <Parameter Name="fecha" Type="date" Mode="In" />
+  </Function>
+  <Function Name="spUpdateJustificarInc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inci" Type="int" Mode="In" />
+    <Parameter Name="tipoJustificacion" Type="int" Mode="In" />
+    <Parameter Name="justificado" Type="bit" Mode="In" />
   </Function>
   <EntityContainer Name="bioModelStoreContainer">
     <EntitySet Name="ACGroup" EntityType="Self.ACGroup" Schema="dbo" store:Type="Tables" />
@@ -726,7 +723,6 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
     <EntitySet Name="AUTHDEVICE" EntityType="Self.AUTHDEVICE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CHECKEXACT" EntityType="Self.CHECKEXACT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CHECKINOUT" EntityType="Self.CHECKINOUT" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Configuracion_Horario" EntityType="Self.Configuracion_Horario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DEPARTMENTS" EntityType="Self.DEPARTMENTS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DeptUsedSchs" EntityType="Self.DeptUsedSchs" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FaceTemp" EntityType="Self.FaceTemp" Schema="dbo" store:Type="Tables" />
@@ -738,6 +734,7 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
     <EntitySet Name="NUM_RUN" EntityType="Self.NUM_RUN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NUM_RUN_DEIL" EntityType="Self.NUM_RUN_DEIL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ReportItem" EntityType="Self.ReportItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SchClass" EntityType="Self.SchClass" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SECURITYDETAILS" EntityType="Self.SECURITYDETAILS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SHIFT" EntityType="Self.SHIFT" Schema="dbo" store:Type="Tables" />
@@ -788,11 +785,11 @@ warning 6002: The table/view 'bio.dbo.UsersMachines' does not have a primary key
     [UsersMachines].[DEVICEID] AS [DEVICEID]
     FROM [dbo].[UsersMachines] AS [UsersMachines]</DefiningQuery>
     </EntitySet>
-    <AssociationSet Name="FK__Incidenci__tipoI__6EC0713C" Association="Self.FK__Incidenci__tipoI__6EC0713C">
+    <AssociationSet Name="FK__Incidenci__tipoI__6B79F03D" Association="Self.FK__Incidenci__tipoI__6B79F03D">
       <End Role="TipoIncidencia" EntitySet="TipoIncidencia" />
       <End Role="Incidencia" EntitySet="Incidencia" />
     </AssociationSet>
-    <AssociationSet Name="FK__Incidenci__tipoJ__6FB49575" Association="Self.FK__Incidenci__tipoJ__6FB49575">
+    <AssociationSet Name="FK__Incidenci__tipoJ__6C6E1476" Association="Self.FK__Incidenci__tipoJ__6C6E1476">
       <End Role="TipoJustificacion" EntitySet="TipoJustificacion" />
       <End Role="Incidencia" EntitySet="Incidencia" />
     </AssociationSet>

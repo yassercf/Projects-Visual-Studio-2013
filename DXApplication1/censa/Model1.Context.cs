@@ -233,5 +233,14 @@ namespace censa
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpdateJustificarInc", inciParameter, tipoJustificacionParameter, justificadoParameter);
         }
+    
+        public virtual ObjectResult<Nullable<System.DateTime>> spGetUserFechasMark(Nullable<int> userid)
+        {
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.DateTime>>("spGetUserFechasMark", useridParameter);
+        }
     }
 }
