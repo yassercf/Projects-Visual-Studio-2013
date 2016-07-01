@@ -31,24 +31,6 @@ namespace censa {
         protected global::DevExpress.Web.ASPxLabel labelHorario;
         
         /// <summary>
-        /// ASPxComboBox1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox ASPxComboBox1;
-        
-        /// <summary>
-        /// SqlDataFechaCheck control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataFechaCheck;
-        
-        /// <summary>
         /// ASPxGridView1 control.
         /// </summary>
         /// <remarks>

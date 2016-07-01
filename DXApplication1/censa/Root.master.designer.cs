@@ -22,6 +22,42 @@ namespace censa {
         protected global::System.Web.UI.WebControls.Image Image1;
         
         /// <summary>
+        /// roll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label roll;
+        
+        /// <summary>
+        /// fechaSis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxDateEdit fechaSis;
+        
+        /// <summary>
+        /// cargarFecha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton cargarFecha;
+        
+        /// <summary>
+        /// mjust control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mjust;
+        
+        /// <summary>
         /// HyperLink1 control.
         /// </summary>
         /// <remarks>
@@ -40,13 +76,13 @@ namespace censa {
         protected global::DevExpress.Web.ASPxLabel notification_header;
         
         /// <summary>
-        /// f control.
+        /// menu1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm f;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu1;
         
         /// <summary>
         /// MainPane control.

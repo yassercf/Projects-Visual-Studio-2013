@@ -11,13 +11,13 @@ namespace censa
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            int idrol = (int)Session["roll"];
-            if (Session["userid"] != null && idrol > 0)
+            //int idrol = (int)Session["roll"];
+            if (Session["userid"] != null && (int)Session["roll"] > 0)
             {
                 ASPxLabel1.Text = RootMaster.MonthName(((DateTime)Session["fechaActual"]).Month);
 
             }
-            else { Server.Transfer("Default.aspx"); }
+            else { Server.Transfer("/"); }
         }
 
         protected void ASPxGridView1_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)

@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SistemasESTIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="accesoRoles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="idRoll" Type="int" />
+    <Property Name="idApps" Type="int" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idModulo" Type="int" />
+    <Property Name="idItemenu" Type="int" />
+    <Property Name="full" Type="bit" />
+  </EntityType>
+  <EntityType Name="apps">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" />
+    <Property Name="esPublico" Type="bit" />
+    <Property Name="url" Type="varchar" MaxLength="255" />
+    <Property Name="foto" Type="varbinary(max)" />
+    <Property Name="codigo" Type="int" />
+  </EntityType>
+  <EntityType Name="menu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" />
+    <Property Name="idModulo" Type="int" />
+  </EntityType>
+  <EntityType Name="modulos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="nomencladores">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="255" />
+    <Property Name="tipo" Type="int" />
+  </EntityType>
+  <EntityType Name="permisos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idApp" Type="int" Nullable="false" />
+    <Property Name="idUsuario" Type="int" Nullable="false" />
+    <Property Name="idRoll" Type="int" />
+    <Property Name="activo" Type="bit" />
+  </EntityType>
+  <EntityType Name="usuarios">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="fullname" Type="varchar" MaxLength="255" />
+    <Property Name="esAdmin" Type="bit" />
+    <Property Name="cid" Type="varchar" MaxLength="11" />
+  </EntityType>
+  <Association Name="FK__accesoRol__idApp__47DBAE45">
+    <End Role="apps" Type="Self.apps" Multiplicity="0..1" />
+    <End Role="accesoRoles" Type="Self.accesoRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="apps">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="accesoRoles">
+        <PropertyRef Name="idApps" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__accesoRol__idIte__48CFD27E">
+    <End Role="menu" Type="Self.menu" Multiplicity="0..1" />
+    <End Role="accesoRoles" Type="Self.accesoRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="menu">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="accesoRoles">
+        <PropertyRef Name="idItemenu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__accesoRol__idMod__49C3F6B7">
+    <End Role="modulos" Type="Self.modulos" Multiplicity="0..1" />
+    <End Role="accesoRoles" Type="Self.accesoRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="modulos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="accesoRoles">
+        <PropertyRef Name="idModulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__accesoRol__idRol__4AB81AF0">
+    <End Role="nomencladores" Type="Self.nomencladores" Multiplicity="0..1" />
+    <End Role="accesoRoles" Type="Self.accesoRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nomencladores">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="accesoRoles">
+        <PropertyRef Name="idRoll" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__menu__idModulo__4BAC3F29">
+    <End Role="modulos" Type="Self.modulos" Multiplicity="0..1" />
+    <End Role="menu" Type="Self.menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="modulos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="menu">
+        <PropertyRef Name="idModulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__permisos__idApp__4CA06362">
+    <End Role="apps" Type="Self.apps" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="permisos" Type="Self.permisos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="apps">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="permisos">
+        <PropertyRef Name="idApp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__permisos__idRoll__4D94879B">
+    <End Role="nomencladores" Type="Self.nomencladores" Multiplicity="0..1" />
+    <End Role="permisos" Type="Self.permisos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nomencladores">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="permisos">
+        <PropertyRef Name="idRoll" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__permisos__idUsua__4E88ABD4">
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="permisos" Type="Self.permisos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="permisos">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="spGetAdminApps" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spGetApps" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idUsuario" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spGetRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="SistemasESTIModelStoreContainer">
+    <EntitySet Name="accesoRoles" EntityType="Self.accesoRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="apps" EntityType="Self.apps" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="menu" EntityType="Self.menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="modulos" EntityType="Self.modulos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="nomencladores" EntityType="Self.nomencladores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="permisos" EntityType="Self.permisos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__accesoRol__idApp__47DBAE45" Association="Self.FK__accesoRol__idApp__47DBAE45">
+      <End Role="apps" EntitySet="apps" />
+      <End Role="accesoRoles" EntitySet="accesoRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__accesoRol__idIte__48CFD27E" Association="Self.FK__accesoRol__idIte__48CFD27E">
+      <End Role="menu" EntitySet="menu" />
+      <End Role="accesoRoles" EntitySet="accesoRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__accesoRol__idMod__49C3F6B7" Association="Self.FK__accesoRol__idMod__49C3F6B7">
+      <End Role="modulos" EntitySet="modulos" />
+      <End Role="accesoRoles" EntitySet="accesoRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__accesoRol__idRol__4AB81AF0" Association="Self.FK__accesoRol__idRol__4AB81AF0">
+      <End Role="nomencladores" EntitySet="nomencladores" />
+      <End Role="accesoRoles" EntitySet="accesoRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__menu__idModulo__4BAC3F29" Association="Self.FK__menu__idModulo__4BAC3F29">
+      <End Role="modulos" EntitySet="modulos" />
+      <End Role="menu" EntitySet="menu" />
+    </AssociationSet>
+    <AssociationSet Name="FK__permisos__idApp__4CA06362" Association="Self.FK__permisos__idApp__4CA06362">
+      <End Role="apps" EntitySet="apps" />
+      <End Role="permisos" EntitySet="permisos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__permisos__idRoll__4D94879B" Association="Self.FK__permisos__idRoll__4D94879B">
+      <End Role="nomencladores" EntitySet="nomencladores" />
+      <End Role="permisos" EntitySet="permisos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__permisos__idUsua__4E88ABD4" Association="Self.FK__permisos__idUsua__4E88ABD4">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="permisos" EntitySet="permisos" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
