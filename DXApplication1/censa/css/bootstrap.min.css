@@ -8,14 +8,22 @@
     float: right;
     /*height:19px;*/
     text-align: center; 
-    margin-right:2px;
+    margin-right:20px;
+  
 }
 #ffecha tr, #ffecha {
     /*width: 50%;*/
-    float: left;
+    float: right;
     /*height: 21px;*/
+    margin-right:1px;
+
 }
 #ffecha input{
-    height: 18px;
+    /*height: 18px;*/
 
+}
+
+#cargarFecha{
+    float:right;
+    margin-left: 0px;
 }

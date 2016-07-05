@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="331e87d42bc04296b77776b22a6af019" Name="Diagram1" ZoomLevel="40">
+        <EntityTypeShape EntityType="bioModel.ACGroup" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="bioModel.ACTimeZones" Width="1.5" PointX="2.75" PointY="5.75" />
+        <EntityTypeShape EntityType="bioModel.ACUnlockComb" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="bioModel.AlarmLog" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="bioModel.AttParam" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="bioModel.AuditedExc" Width="1.5" PointX="7.75" PointY="6.75" />
+        <EntityTypeShape EntityType="bioModel.AUTHDEVICE" Width="1.5" PointX="4.75" PointY="8.75" />
+        <EntityTypeShape EntityType="bioModel.CHECKEXACT" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="bioModel.CHECKINOUT" Width="1.5" PointX="9.75" PointY="5.75" />
+        <EntityTypeShape EntityType="bioModel.DEPARTMENTS" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="bioModel.DeptUsedSchs" Width="1.5" PointX="6.75" PointY="10.75" />
+        <EntityTypeShape EntityType="bioModel.FaceTemp" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="bioModel.HOLIDAYS" Width="1.5" PointX="2.75" PointY="11.75" />
+        <EntityTypeShape EntityType="bioModel.Incidencia" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="bioModel.LeaveClass" Width="1.5" PointX="11.75" PointY="4.75" />
+        <EntityTypeShape EntityType="bioModel.LeaveClass1" Width="1.5" PointX="11.75" PointY="8.75" />
+        <EntityTypeShape EntityType="bioModel.Machines" Width="1.5" PointX="8.75" PointY="12.75" />
+        <EntityTypeShape EntityType="bioModel.NUM_RUN" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="bioModel.NUM_RUN_DEIL" Width="1.5" PointX="13.75" PointY="4.75" />
+        <EntityTypeShape EntityType="bioModel.ReportItem" Width="1.5" PointX="4.75" PointY="13.75" />
+        <EntityTypeShape EntityType="bioModel.SchClass" Width="1.5" PointX="13.75" PointY="8.75" />
+        <EntityTypeShape EntityType="bioModel.SECURITYDETAILS" Width="1.5" PointX="10.75" PointY="13.75" />
+        <EntityTypeShape EntityType="bioModel.SHIFT" Width="1.5" PointX="12.75" PointY="14.75" />
+        <EntityTypeShape EntityType="bioModel.sysdiagrams" Width="1.5" PointX="14.75" PointY="14.75" />
+        <EntityTypeShape EntityType="bioModel.SystemLog" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="bioModel.TBSMSALLOT" Width="1.5" PointX="15.75" PointY="3.75" />
+        <EntityTypeShape EntityType="bioModel.TBSMSINFO" Width="1.5" PointX="15.75" PointY="6.75" />
+        <EntityTypeShape EntityType="bioModel.TEMPLATE" Width="1.5" PointX="0.75" PointY="16.75" />
+        <EntityTypeShape EntityType="bioModel.TipoIncidencia" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="bioModel.TipoJustificacion" Width="1.5" PointX="0.75" PointY="1.75" />
+        <EntityTypeShape EntityType="bioModel.USER_OF_RUN" Width="1.5" PointX="15.75" PointY="10.75" />
+        <EntityTypeShape EntityType="bioModel.USER_SPEDAY" Width="1.5" PointX="16.75" PointY="13.75" />
+        <EntityTypeShape EntityType="bioModel.USER_TEMP_SCH" Width="1.5" PointX="16.75" PointY="16.75" />
+        <EntityTypeShape EntityType="bioModel.UserACMachines" Width="1.5" PointX="17.75" PointY="0.75" />
+        <EntityTypeShape EntityType="bioModel.UserACPrivilege" Width="1.5" PointX="2.75" PointY="17.75" />
+        <EntityTypeShape EntityType="bioModel.USERINFO" Width="1.5" PointX="4.75" PointY="17.75" />
+        <EntityTypeShape EntityType="bioModel.UserUpdates" Width="1.5" PointX="17.75" PointY="3.75" />
+        <EntityTypeShape EntityType="bioModel.UserUsedSClasses" Width="1.5" PointX="17.75" PointY="6.75" />
+        <EntityTypeShape EntityType="bioModel.EmOpLog" Width="1.5" PointX="17.75" PointY="9.75" />
+        <EntityTypeShape EntityType="bioModel.ServerLog" Width="1.5" PointX="18.75" PointY="13.75" />
+        <EntityTypeShape EntityType="bioModel.UsersMachines" Width="1.5" PointX="18.75" PointY="17.75" />
+        <AssociationConnector Association="bioModel.FK__Incidenci__tipoI__6EC0713C" />
+        <AssociationConnector Association="bioModel.FK__Incidenci__tipoJ__6FB49575" />
+        <EntityTypeShape EntityType="bioModel.roles" Width="1.5" PointX="20.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

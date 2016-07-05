@@ -25,7 +25,7 @@ namespace censa
                 roll.Text = r.descripcion;
                 fechaSis.EditFormatString = "dddd dd MMMM, yyyy";
                 fechaSis.Date = (DateTime)Session["fechaActual"];
-
+                imgperfil.ImageUrl = string.Format("Handler1.ashx?UserID={0}", Session["userid"]);
                 //habilitar el menú justificar según el rol
                 mjust.Visible = (r.id > 0 ? true : false);
 

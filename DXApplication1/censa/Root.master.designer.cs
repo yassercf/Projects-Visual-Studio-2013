@@ -13,13 +13,13 @@ namespace censa {
     public partial class RootMaster {
         
         /// <summary>
-        /// Image1 control.
+        /// imgperfil control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
+        protected global::DevExpress.Web.ASPxImage imgperfil;
         
         /// <summary>
         /// roll control.
@@ -29,24 +29,6 @@ namespace censa {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label roll;
-        
-        /// <summary>
-        /// fechaSis control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxDateEdit fechaSis;
-        
-        /// <summary>
-        /// cargarFecha control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton cargarFecha;
         
         /// <summary>
         /// mjust control.
@@ -83,6 +65,24 @@ namespace censa {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu1;
+        
+        /// <summary>
+        /// cargarFecha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton cargarFecha;
+        
+        /// <summary>
+        /// fechaSis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxDateEdit fechaSis;
         
         /// <summary>
         /// MainPane control.

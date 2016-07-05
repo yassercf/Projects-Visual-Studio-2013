@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SistemasESTIModelStoreContainer" CdmEntityContainer="SistemasESTIEntities">
+    <EntitySetMapping Name="accesoRoles">
+      <EntityTypeMapping TypeName="SistemasESTIModel.accesoRoles">
+        <MappingFragment StoreEntitySet="accesoRoles">
+          <ScalarProperty Name="idRoll" ColumnName="idRoll" />
+          <ScalarProperty Name="idApps" ColumnName="idApps" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idModulo" ColumnName="idModulo" />
+          <ScalarProperty Name="idItemenu" ColumnName="idItemenu" />
+          <ScalarProperty Name="full" ColumnName="full" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="apps">
+      <EntityTypeMapping TypeName="SistemasESTIModel.apps">
+        <MappingFragment StoreEntitySet="apps">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="esPublico" ColumnName="esPublico" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="menu">
+      <EntityTypeMapping TypeName="SistemasESTIModel.menu">
+        <MappingFragment StoreEntitySet="menu">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idModulo" ColumnName="idModulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="modulos">
+      <EntityTypeMapping TypeName="SistemasESTIModel.modulos">
+        <MappingFragment StoreEntitySet="modulos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nomencladores">
+      <EntityTypeMapping TypeName="SistemasESTIModel.nomencladores">
+        <MappingFragment StoreEntitySet="nomencladores">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="permisos">
+      <EntityTypeMapping TypeName="SistemasESTIModel.permisos">
+        <MappingFragment StoreEntitySet="permisos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idApp" ColumnName="idApp" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="idRoll" ColumnName="idRoll" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuarios">
+      <EntityTypeMapping TypeName="SistemasESTIModel.usuarios">
+        <MappingFragment StoreEntitySet="usuarios">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="esAdmin" ColumnName="esAdmin" />
+          <ScalarProperty Name="cid" ColumnName="cid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spGetAdminApps" FunctionName="SistemasESTIModel.Store.spGetAdminApps">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SistemasESTIModel.spGetAdminApps_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="esPublico" ColumnName="esPublico" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetApps" FunctionName="SistemasESTIModel.Store.spGetApps">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SistemasESTIModel.spGetApps_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="esPublico" ColumnName="esPublico" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetRoles" FunctionName="SistemasESTIModel.Store.spGetRoles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SistemasESTIModel.spGetRoles_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
